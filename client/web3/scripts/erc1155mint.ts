@@ -8,7 +8,7 @@ async function mint(to: string, id: number, amount: number) {
   console.log('mint :', mint);
 }
 
-const id = 1;
+const id = 0;
 mint(process.env.PUBLIC_KEY!, id, 5).catch((error) => {
   console.error(error);
   process.exitCode = 1;
