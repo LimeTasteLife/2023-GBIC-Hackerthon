@@ -9,11 +9,12 @@ contract MyERC1155 is ERC1155PresetMinterPauser {
         setURI(2,"series2/0");
         mint(msg.sender,0,10,''); //data is needed only when neccessary
     }
+    
 
     using Strings for uint256;
 
     // Optional base URI
-    string private _baseURI = "";
+    string private _baseURI = "https://raw.githubusercontent.com/LimeTasteLife/2023-GBIC-Hackerthon/tree/Youjun/client/web3/metadata/";
 
     // Optional mapping for token URIs
     mapping(uint256 => string) private _tokenURIs;
