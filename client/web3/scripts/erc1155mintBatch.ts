@@ -9,7 +9,7 @@ async function mint(to: string, id: Array<number>, amount: Array<number>) {
 }
 
 const ids = [0, 1, 2];
-const amounts = [10, 11, 12];
+const amounts = [5, 11, 12];
 mint(process.env.PUBLIC_KEY!, ids, amounts).catch((error) => {
   console.error(error);
   process.exitCode = 1;
