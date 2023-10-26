@@ -42,9 +42,9 @@ const SeriesSite = ({
         </div>
 
         <span className='text-[200px] flex flex-col text-white font-semibold absolute -bottom-[120px] opacity-40 left-0 leading-0'>
-        <span className='text-[100px] -mb-20'>Series</span>
-        01
-      </span>
+          <span className='text-[100px] -mb-20'>Series</span>
+          01
+        </span>
 
         <div className='flexCenter gap-6'>
           <span className='flex -space-x-4 overflow-hidden'>
@@ -75,9 +75,9 @@ const SeriesSite = ({
               xmlns='http://www.w3.org/2000/svg'
             >
               <path
-                stroke-linecap='round'
-                stroke-linejoin='round'
-                stroke-width='2'
+                strokeLinecap='round'
+                strokeLinejoin='round'
+                strokeWidth='2'
                 d='M14 5l7 7m0 0l-7 7m7-7H3'
               ></path>
             </svg>
@@ -85,7 +85,6 @@ const SeriesSite = ({
           <span className='relative'>자세히 보기</span>
         </Link>
       </div>
-      
     </div>
   );
 };

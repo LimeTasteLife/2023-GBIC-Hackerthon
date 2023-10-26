@@ -46,9 +46,9 @@ const Hero = () => {
                 xmlns='http://www.w3.org/2000/svg'
               >
                 <path
-                  stroke-linecap='round'
-                  stroke-linejoin='round'
-                  stroke-width='2'
+                  strokeLinecap='round'
+                  strokeLinejoin='round'
+                  strokeWidth='2'
                   d='M14 5l7 7m0 0l-7 7m7-7H3'
                 ></path>
               </svg>
@@ -68,12 +68,12 @@ const Hero = () => {
       </div>
 
       <div className='relative flex flex-1 items-start  '>
-        <Image 
-        className='ml-10'
-        src="/NFTImages/stampBoard.png"
-        alt="stampBoardExample"
-        width={550}
-        height={550}
+        <Image
+          className='ml-10'
+          src='/NFTImages/stampBoard.png'
+          alt='stampBoardExample'
+          width={550}
+          height={550}
         />
         <div className='absolute flex  -bottom-20 -ml-20 z-20 w-[268px] flex-col gap-8 rounded-3xl bg-green-400 px-7 py-8'>
           <div className='flex flex-col'>

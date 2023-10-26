@@ -7,6 +7,8 @@ const config: Config = {
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
     './node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}',
+    './node_modules/flowbite/**/*.js',
+    './node_modules/tailwind-datepicker-react/dist/**/*.js',
   ],
   theme: {
     extend: {
@@ -15,11 +17,14 @@ const config: Config = {
           50: '#30AF5B',
           90: '#292C27',
         },
+        primary: {
+          DEFAULT: '#45D483',
+        },
         gray: {
           10: '#EEEEEE',
           20: '#A2A2A2',
           30: '#7B7B7B',
-          50: '#585858',
+
           90: '#141414',
         },
         orange: {
@@ -35,8 +40,6 @@ const config: Config = {
       backgroundImage: {
         'bg-img-1': "url('/lendingPage/img-1.png')",
         'bg-img-2': "url('/lendingPage/img-2.png')",
-        'feature-bg': "url('')",
-        pattern: "url('')",
         
       },
       screens: {
@@ -52,7 +55,12 @@ const config: Config = {
       },
     },
   },
-  darkMode: 'class',
-  plugins: [nextui()],
+
+  plugins: [
+    require('flowbite/plugin'),
+    nextui({
+      addCommonColors: true,
+    }),
+  ],
 };
 export default config;
