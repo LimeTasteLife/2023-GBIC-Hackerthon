@@ -30,13 +30,13 @@ const HowCard = ({ id, imgUrl, title, index, active, handleClick }: any) => (
         <div
           className={`${styles.flexCenter} w-[60px] h-[60px] rounded-[24px] glassmorphism mb-[16px]`}
         >
-          <Image
+          {/* <Image
             src='/headset.svg'
             alt='headset'
             className='w-1/2 h-1/2 object-contain'
             width={300}
             height={300}
-          />
+          /> */}
         </div>
         <p className='font-normal text-[16px] leading-[20.16px] text-white uppercase'>
           Enter Metaverse

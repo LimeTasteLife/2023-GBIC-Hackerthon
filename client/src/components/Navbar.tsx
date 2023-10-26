@@ -15,10 +15,16 @@ import { NAV_LINKS } from '@/constants';
 import { usePathname } from 'next/navigation';
 import Image from 'next/image';
 
+import { signOut, useSession } from 'next-auth/react';
+
 export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const pathName = usePathname();
+
+  const { data: session, status } = useSession();
+  const user: any = session?.user!;
+  console.log({ session }, status);
 
   const menuItems = [
     'Profile',
@@ -77,11 +83,27 @@ export default function App() {
         </NavbarItem>
       </NavbarContent>
       <NavbarContent justify='end'>
-        <NavbarItem>
-          <Button as={Link} color='primary' href='#' variant='flat'>
-            Login
-          </Button>
-        </NavbarItem>
+        {session?.user ? (
+          <NavbarItem>
+            <Button
+              as={Link}
+              color='primary'
+              href='/auth/login'
+              variant='flat'
+              onClick={() => {
+                signOut({ redirect: true });
+              }}
+            >
+              Sign out
+            </Button>
+          </NavbarItem>
+        ) : (
+          <NavbarItem>
+            <Button as={Link} color='primary' href='/auth/login' variant='flat'>
+              Sign up
+            </Button>
+          </NavbarItem>
+        )}
       </NavbarContent>
       <NavbarMenu>
         {NAV_LINKS.map((item, index) => (

@@ -1,0 +1,61 @@
+{
+
+  "seriesInfo": {
+    "title": "강화도 맛집 탐방 시리즈~",
+    "series": 1,
+    "benefit": "지역문화 상품권 10000원",
+    "description": "강화도에 있는 다양한 맛집과 문하재를 탐방하면서 스탬프를 찍어오는 이벤트",
+    "useWhere": "인천 가락시작",
+    "owner": "GBIC",
+    "useWhenFrom": "Thu Oct 26 2023 00:00:00 GMT+0900 (Korean Standard Time)",
+    "useWhenTo": "Thu Oct 26 2023 00:00:00 GMT+0900 (Korean Standard Time)"
+  },
+  "0": {
+    "name": "Series 1 Stamp Board",
+    "image": "https://raw.githubusercontent.com/LimeTasteLife/2023-GBIC-Hackerthon/49b30f091baa6c0fdae2bfa6d218a81a3158be7d/client/web3/metadata/series2incheon.png",
+    "description": "첫번째 인천 스탬프 NFT 시리즈의 도장판",
+    "quantity": 10,
+    "series": 1
+  },
+  "1": {
+    "name": "Series 1 Stamp 1",
+    "image": "https://raw.githubusercontent.com/LimeTasteLife/2023-GBIC-Hackerthon/49b30f091baa6c0fdae2bfa6d218a81a3158be7d/client/web3/metadata/series2incheon.png",
+    "description": "첫번째 인천 스탬프 NFT 시리즈의 도장",
+    "quantity": 10,
+    "lat": 37.2345,
+    "lng": 126.5334,
+    "place": "인천광역시 강화군 보문사",
+    "series": 1
+  },
+  "2": {
+    "name": "Series 1 Stamp 2",
+    "image": "https://raw.githubusercontent.com/LimeTasteLife/2023-GBIC-Hackerthon/49b30f091baa6c0fdae2bfa6d218a81a3158be7d/client/web3/metadata/series2incheon.png",
+    "description": "첫번째 인천 스탬프 NFT 시리즈의 도장",
+    "quantity": 10,
+    "lat": 37.2345,
+    "lng": 126.5334,
+    "place": "인천광역시 강화군 보문사",
+    "series": 1
+  },
+  "3": {
+    "name": "Series 1 Stamp 3",
+    "image": "https://raw.githubusercontent.com/LimeTasteLife/2023-GBIC-Hackerthon/49b30f091baa6c0fdae2bfa6d218a81a3158be7d/client/web3/metadata/series2incheon.png",
+    "description": "첫번째 인천 스탬프 NFT 시리즈의 도장",
+    "quantity": 10,
+    "lat": 37.2345,
+    "lng": 126.5334,
+    "place": "인천광역시 강화군 보문사",
+    "series": 1
+  },
+  "4": {
+    "name": "Series 1 Stamp 4",
+    "image": "https://raw.githubusercontent.com/LimeTasteLife/2023-GBIC-Hackerthon/49b30f091baa6c0fdae2bfa6d218a81a3158be7d/client/web3/metadata/series2incheon.png",
+    "description": "첫번째 인천 스탬프 NFT 시리즈의 도장",
+    "quantity": 10,
+    "lat": 37.2345,
+    "lng": 126.5334,
+    "place": "인천광역시 강화군 보문사",
+    "series": 1
+  }
+}
+
