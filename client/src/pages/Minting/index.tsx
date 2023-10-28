@@ -119,6 +119,9 @@ const ERC1155 = () => {
     console.log('data', data);
     const result = mintData(data={data});
     console.log('result', result);
+
+
+    
     // setIsLoading(true);
     // axios
     //   .post('/api/add-transaction/polygon_ERC1155', data)

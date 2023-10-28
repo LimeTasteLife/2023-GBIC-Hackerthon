@@ -20,6 +20,10 @@
 //     return NextResponse.redirect(new URL('/auth/login', req.url));
 //   }
 
+//   if (pathname.startsWith('/transferNFT') && !session) {
+//     return NextResponse.redirect(new URL('/auth/login', req.url));
+//   }
+
 //   // Logged-in users do not access the login / membership registration pages.
 //   if (pathname.startsWith('/auth') && session) {
 //     return NextResponse.redirect(new URL('/', req.url));

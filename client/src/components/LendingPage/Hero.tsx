@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import Button from '../Button';
-5049;
 
 const Hero = () => {
   return (
@@ -9,10 +8,16 @@ const Hero = () => {
       <div className='hero-map' />
 
       <div className='relative z-20 flex flex-1 flex-col xl:w-1/2'>
-       
-      <h1 className="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl "><span className="underline underline-offset-3 decoration-8 decoration-green-400 ">world’s first</span></h1>
+        <h1 className='mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl '>
+          <span className='underline underline-offset-3 decoration-8 decoration-green-400 '>
+            world’s first
+          </span>
+        </h1>
         <span className='flex flex-col bold-52 md:text-5xl lg:text-6xl lg:bold-88'>
-        <span className="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400">Dynamic NFT</span> Stamp event
+          <span className='text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400'>
+            Dynamic NFT
+          </span>{' '}
+          Stamp event
         </span>
         <p className='regular-16 py-6 text-gray-30 xl:max-w-[520px]'>
           스탬프 보드 NFT와 함께 인천의 다양한 문화를 더욱 알차게 즐기세요! 이
@@ -67,15 +72,14 @@ const Hero = () => {
         </div>
       </div>
 
-      <div className='relative flex flex-1 items-start  '>
+      <div className='relative flex flex-1 w-full justify-center  '>
         <Image
-          className='ml-10'
-          src='/NFTImages/stampBoard.png'
+          src='/NFTImages/stampBoardA.png'
           alt='stampBoardExample'
           width={550}
           height={550}
         />
-        <div className='absolute flex  -bottom-20 -ml-20 z-20 w-[268px] flex-col gap-8 rounded-3xl bg-green-400 px-7 py-8'>
+        <div className='sm:flex absolute hidden -bottom-20 -left-40 z-20 w-[268px] flex-col gap-8 rounded-3xl bg-green-400 px-7 py-8'>
           <div className='flex flex-col'>
             <div className='flexBetween'>
               <p className='regular-20 text-white'>남은 장소 :</p>
@@ -97,10 +101,6 @@ const Hero = () => {
               <p className='bold-18 text-white'>+</p>
               <p className='bold-18 text-white'>GBIC 입장권</p>
             </div>
-            {/* <div className='flex flex-col'>
-              <p className='regular-16 block text-white'>현재 포인트</p>
-              <p className='bold-20 text-white'>1,000 p</p>
-            </div> */}
           </div>
         </div>
       </div>

@@ -28,7 +28,7 @@ import { Drawer } from 'flowbite';
 
 import getAddress from '@/helpers/getAddress';
 import { Progress, Snippet } from '@nextui-org/react';
-import KakaoMap from '@/components/KakaoMap';
+
 import './styles.module.css';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -38,6 +38,7 @@ import 'swiper/css/effect-cube';
 import 'swiper/css/pagination';
 // import required modules
 import { EffectCube, Pagination } from 'swiper/modules';
+import KakaoMapSeries from '@/components/KakaoMapSeries';
 
 // export async function getServerSideProps(context: GetServerSidePropsContext) {
 //   console.log('getServerSide33', context.params?.transactionId);
@@ -60,7 +61,6 @@ import { EffectCube, Pagination } from 'swiper/modules';
 // }
 
 const SeriesID = (props: { transaction: any }) => {
-
   const KakaoMap = dynamic(() => import('../../../components/KakaoMap'), {
     ssr: false,
   });
@@ -227,21 +227,21 @@ const SeriesID = (props: { transaction: any }) => {
       </section>
 
       <div className=' px-4 mx-auto max-w-screen-xl '>
-              <div className='flex justify-between'>
-                <p className='text-lg'>43명 참여 완료</p>
-                <p className='text-lg text-foreground/50'>최대 50명</p>
-              </div>
-      <Progress
-              aria-label='Music progress'
-              classNames={{
-                indicator: 'bg-green-600 ',
-                track: 'bg-default-500/30',
-              }}
-              color='default'
-              size='md'
-              value={86}
-            />
-    </div>
+        <div className='flex justify-between'>
+          <p className='text-lg'>43명 참여 완료</p>
+          <p className='text-lg text-foreground/50'>최대 50명</p>
+        </div>
+        <Progress
+          aria-label='Music progress'
+          classNames={{
+            indicator: 'bg-green-600 ',
+            track: 'bg-default-500/30',
+          }}
+          color='default'
+          size='md'
+          value={86}
+        />
+      </div>
 
       <div className='py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 lg:px-6 '>
         <div className='grid gap-8 lg:gap-16 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
@@ -379,7 +379,12 @@ const SeriesID = (props: { transaction: any }) => {
 
       <section className='bg-white dark:bg-gray-900'>
         <div className='gap-8 items-center py-8 px-4 mx-auto max-w-screen-xl xl:gap-16 md:grid md:grid-cols-2 sm:py-16 lg:px-6'>
-          <KakaoMap height='400px'/>
+          <KakaoMapSeries
+            height='400px'
+            level={10}
+            draggable={true}
+            zoomable={true}
+          />
           <div className='mt-4 md:mt-0'>
             <h2 className='mb-4 text-4xl tracking-tight font-extrabold text-gray-900 '>
               Description

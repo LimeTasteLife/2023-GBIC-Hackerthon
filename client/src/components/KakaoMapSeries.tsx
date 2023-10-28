@@ -2,20 +2,32 @@ import { Map, MapMarker } from 'react-kakao-maps-sdk';
 import { IncheonSeriesExample } from '../constants';
 
 interface KakaoMapProps {
+  latitude?: number | string;
+  longitude?: number | string;
+  setCustomValue?: (id: string, value: number) => void;
+  detailPage?: boolean;
   width?: string;
   height?: string;
   level: number;
   draggable: boolean;
   zoomable: boolean;
+
 }
 
-const KakaoMap = ({
+const KakaoMapSeries = ({
+  latitude,
+  longitude,
+  setCustomValue,
+  detailPage = false,
   width,
   height,
   level,
   draggable,
   zoomable,
+ 
 }: KakaoMapProps) => {
+
+
   return (
     <Map
       center={{ lat: 37.66673760000001, lng: 126.3833964 }}
@@ -74,11 +86,19 @@ const KakaoMap = ({
       >
         <div style={{ color: '#000' }}>{IncheonSeriesExample[3].label}</div>
       </MapMarker>
+      <MapMarker
+        position={{
+          lat: IncheonSeriesExample[0].lat,
+          lng: IncheonSeriesExample[0].lng,
+        }}
+      >
+        <div style={{ color: '#000' }}>{IncheonSeriesExample[3].label}</div>
+      </MapMarker>
     </Map>
   );
 };
 
-export default KakaoMap;
+export default KakaoMapSeries;
 
 // width={1440} 37.75373760000001, lng: 126.4833964
 //           height={580}

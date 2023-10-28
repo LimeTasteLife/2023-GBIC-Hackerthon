@@ -95,7 +95,7 @@ export default function App() {
             {NAV_LINKS[1].label}
           </Link>
         </NavbarItem>
-        <NavbarItem isActive={pathName === NAV_LINKS[1].href}>
+        <NavbarItem isActive={pathName === NAV_LINKS[4].href}>
           <Link
             color={`${
               pathName === NAV_LINKS[4].href ? 'primary' : 'foreground'
@@ -163,7 +163,7 @@ export default function App() {
           </Dropdown>
         ) : (
           <NavbarItem>
-            <Button as={Link} color='primary' href='/auth/login' variant='flat'>
+            <Button as={Link} color='success' href='/auth/login' variant='flat' className='text-lg'>
               Sign up
             </Button>
           </NavbarItem>

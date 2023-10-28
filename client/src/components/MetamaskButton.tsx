@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { MetaMaskConnector } from 'wagmi/connectors/metaMask';
+
 import { signIn } from 'next-auth/react';
 import { useAccount, useConnect, useSignMessage, useDisconnect } from 'wagmi';
 import { useAuthRequestChallengeEvm } from '@moralisweb3/next';
@@ -56,14 +57,14 @@ const MetamaskButton = () => {
       onClick={handleAuth}
       disabled={proceed}
       type='button'
-      className={`text-gray-900 bg-green-300 hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center  align-center justify-center transform ${
+      className={`w-full text-gray-900 bg-green-300 hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-lg px-5 py-2.5 text-center inline-flex items-center  align-center justify-center transform ${
         proceed && 'cursor-wait'
       }`}
     >
       {loading ? (
         <svg
           aria-hidden='true'
-          className='inline w-7 h-7 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-yellow-400'
+          className='inline w-10 h-10 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-yellow-400'
           viewBox='0 0 100 101'
           fill='none'
           xmlns='http://www.w3.org/2000/svg'
@@ -80,7 +81,7 @@ const MetamaskButton = () => {
       ) : (
         <svg
           aria-hidden='true'
-          className='w-6 h-5 mr-2 -ml-1'
+          className='w-10 h-10 mr-2 -ml-1'
           viewBox='0 0 2405 2501'
           fill='none'
           xmlns='http://www.w3.org/2000/svg'

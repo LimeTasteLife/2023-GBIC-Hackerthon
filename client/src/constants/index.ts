@@ -86,7 +86,7 @@ export const SOCIALS = {
 };
 
 export const IncheonSeriesExample = [
-  { label: '전등사', lat: 37.75373760000001, lng: 126.4833964 },
+  { label: '강화군청', lat: 37.7466294, lng: 126.4878771 },
   { label: '광성보', lat: 37.664987, lng: 126.5300939 },
   { label: '동막해수욕장', lat: 37.5925761, lng: 126.4581875 },
   { label: '보문사', lat: 37.68862319999999, lng: 126.3219046 },
@@ -95,28 +95,33 @@ export const IncheonSeriesExample = [
 export const Step = [
   {
     id: 'world-1',
-    imgUrl: '/lendingPage/metamaskLogin.png',
+    imgUrl: '/lendingPage/walletLogin.png',
     title: '지갑으로 간편 로그인',
+    desc: 'Web3 wallet 만 있다면 별도의 회원가입 없이 쉽고 빠르게 로그인할 수 있습니다.'
   },
   {
     id: 'world-2',
     imgUrl: '/lendingPage/planet-02.png',
     title: '진행중인 시리즈 둘러보기',
+    desc: 'Series 페이지에서 현재 진행중인 Series를 확인하세요. NFT 수량은 정해져 있는 만큼 빠른 선점이 필요할 수 있습니다.'
   },
   {
     id: 'world-3',
     imgUrl: '/lendingPage/planet-03.png',
     title: '원하는 시리즈 선택 후 스템프 보드 NFT 받기',
+    desc: '자신이 하고 싶은 Series를 빠르게 선택하고 도장(스탬프) NFT를 찍을 스템프 보드 NFT를 받으세요.'
   },
   {
     id: 'world-4',
     imgUrl: '/lendingPage/planet-04.png',
     title: '미션 수행하면서 스탬프 NFT 받기',
+    desc: '자신이 신청한 Series의 NFT 도장을 받을 수 있는 조건(유효기간 및 장소)을 확인하세요. 그리고 Burrito Wallet 또는 SNS 를 통해 행위인증을 진행하세요.'
   },
   {
     id: 'world-5',
     imgUrl: '/lendingPage/planet-05.png',
     title: '준비된 또는 뜻밖의 혜택 받기',
+    desc: '행위 인증이 인정받게 되면 도장 NFT를 받게되고 MyNFT에서 스탬프 보드 NFT 위에 찍혀 있는 NFT을 확인 할 수 있습니다! 이제 이 NFT는 예정된 또는, 뜻밖의 혜택을 받을 수 있는 티켓이 됩니다.'
   },
 ];
 

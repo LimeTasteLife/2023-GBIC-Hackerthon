@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { User } from '@prisma/client';
 import { getSession } from 'next-auth/react';
 import axios from 'axios';
-import { Card, CardBody, CardFooter } from '@nextui-org/react';
+import { Card, CardBody, CardFooter, Progress } from '@nextui-org/react';
 import Link from 'next/link';
 
 // export async function getServerSideProps(context: GetServerSidePropsContext) {
@@ -65,19 +65,18 @@ const Profile = (props: { userProfile: any }) => {
       <section className='relative py-16 bg-blue-gray-50/50 sm:px-4'>
         <div className=' mx-auto'>
           <div className='relative mb-6 -mt-64 flex w-full min-w-0 flex-col break-words rounded-3xl bg-white shadow-lg shadow-gray-300 '>
-            
-              <div className='flex flex-wrap justify-center'>
-                <div className='flex w-full justify-center px-4 lg:order-2 lg:w-3/12'>
-                  <div className='relative'>
-                    <div className='-mt-40 w-50 mx-auto'>
-                      <Image
-                        className='rounded-full'
-                        src='https://i.pravatar.cc/150?u=a04258a2462d826712d'
-                        alt='Rounded avatar'
-                        width={300}
-                        height={300}
-                      />
-                      {/* {profile.image ? (
+            <div className='flex flex-wrap justify-center'>
+              <div className='flex w-full justify-center px-4 lg:order-2 lg:w-3/12'>
+                <div className='relative'>
+                  <div className='-mt-40 w-50 mx-auto'>
+                    <Image
+                      className='rounded-full'
+                      src='https://i.pravatar.cc/150?u=a04258a2462d826712d'
+                      alt='Rounded avatar'
+                      width={300}
+                      height={300}
+                    />
+                    {/* {profile.image ? (
                         <Image
                           className='rounded-full'
                           src={`${profile.image}`}
@@ -98,177 +97,196 @@ const Profile = (props: { userProfile: any }) => {
                           </svg>
                         </>
                       )} */}
-                    </div>
-                  </div>
-                </div>
-                <div className='w-full px-4 lg:order-1 lg:w-4/12 text-lg'>
-                  <div className='flex justify-center py-4 pt-8 lg:pt-4'>
-                    <div className='flex flex-col mr-4 p-3 text-center'>
-                      <span className='font-bold uppercase'>3</span>
-                      <span className='font-normal text-gray-500'>
-                        참여한 시리즈 수
-                      </span>
-                    </div>
-                    <div className='flex flex-col mr-4 p-3 text-center'>
-                      <span className='font-bold uppercase'>5</span>
-                      <span className='font-normal text-gray-500'>
-                        받은 NFT 개수
-                      </span>
-                    </div>
-                  </div>
-                </div>
-
-                <div className='w-full px-4 lg:order-3 lg:w-4/12 text-lg'>
-                  <div className='flex justify-center py-4 pt-8 lg:pt-4'>
-                    <div className='flex flex-col mr-4 p-3 text-center'>
-                      <span className='font-bold uppercase'>YouJun</span>
-                      <span className='font-normal text-gray-500'>닉네임</span>
-                    </div>
-                    <div className='flex flex-col mr-4 p-3 text-center'>
-                      <span className='font-bold uppercase'>관리자</span>
-                      <span className='font-normal text-gray-500'>Type</span>
-                    </div>
-                   
                   </div>
                 </div>
               </div>
-              <div className='my-8 text-center'>
-                <h3 className='mb-2 font-semibold text-2xl'>YouJun</h3>
-                <div className='mb-10 mt-3 flex flex-col items-center justify-center gap-2'>
-                  <span className='font-medium text-blue-gray-700'>
-                    0x718579A4952DF3Ffc46226f4071Dc40131ae0E3d
-                  </span>
-                  <span className='font-normal text-blue-gray-500'>
-                    안녕하세요! 스탬프 NFT로 다양한 활동을 기획중인 교사입니다.
-                  </span>
+              <div className='w-full px-4 lg:order-1 lg:w-4/12 text-lg'>
+                <div className='flex justify-center py-4 pt-8 lg:pt-4'>
+                  <div className='flex flex-col mr-4 p-3 text-center'>
+                    <span className='font-bold uppercase'>3</span>
+                    <span className='font-normal text-gray-500'>
+                      참여한 시리즈 수
+                    </span>
+                  </div>
+                  <div className='flex flex-col mr-4 p-3 text-center'>
+                    <span className='font-bold uppercase'>5</span>
+                    <span className='font-normal text-gray-500'>
+                      받은 NFT 개수
+                    </span>
+                  </div>
                 </div>
               </div>
 
-              <div className='mb-10 border-t-3 border-green-300 py-10 text-center'>
-                <div className='flex flex-wrap w-full justify-around px-4 gap-10 '>
-                  <div className='relative flex justify-center'>
-                    <Card
-                      shadow='sm'
-                      isPressable
-                      onPress={() => console.log('item pressed')}
-                    >
-                      <CardBody className='overflow-visible p-0'>
-                        <Image
-                          width={400}
-                          height={400}
-                          alt='NextUI hero Image'
-                          src='/NFTImages/stampBoardA.png'
-                          className='min-w-[400px]'
-                        />
-                      </CardBody>
-                      <CardFooter className='text-small justify-between'>
-                        <b>Title</b>
-                        <p className='text-default-500'>Series 1</p>
-                      </CardFooter>
-                    </Card>
-
-                    <div
-                      className='absolute grid grid-rows-2 grid-cols-2 gap-9 top-24'
-                      draggable='false'
-                    >
-                      <Image
-                        src='/NFTImages/incheon1.jpeg'
-                        alt='stamp1'
-                        width={90}
-                        height={90}
-                        className='rounded-xl shadow-2xl'
-                      />
-                      <Image
-                        src='/NFTImages/incheon2.jpeg'
-                        alt='stamp1'
-                        width={90}
-                        height={90}
-                        className='rounded-xl shadow-2xl'
-                      />
-                      <Image
-                        src='/NFTImages/incheon3.jpeg'
-                        alt='stamp1'
-                        width={90}
-                        height={90}
-                        className='rounded-xl shadow-2xl'
-                      />
-                      <Image
-                        src='/NFTImages/incheon4.jpeg'
-                        alt='stamp1'
-                        width={90}
-                        height={90}
-                        className='rounded-xl shadow-2xl'
-                      />
-                    </div>
+              <div className='w-full px-4 lg:order-3 lg:w-4/12 text-lg'>
+                <div className='flex justify-center py-4 pt-8 lg:pt-4'>
+                  <div className='flex flex-col mr-4 p-3 text-center'>
+                    <span className='font-bold uppercase'>YouJun</span>
+                    <span className='font-normal text-gray-500'>닉네임</span>
                   </div>
-                  <div className='relative flex justify-center'>
-                    <Card
-                      shadow='sm'
-                      isPressable
-                      onPress={() => console.log('item pressed')}
-                    >
-                      <CardBody className='overflow-visible p-0'>
-                        <Image
-                          width={400}
-                          height={400}
-                          alt='NextUI hero Image'
-                          src='/NFTImages/stampBoardA.png'
-                          className='min-w-[400px]'
-                        />
-                      </CardBody>
-                      <CardFooter className='text-small justify-between'>
-                        <b>Title</b>
-                        <p className='text-default-500'>Series 1</p>
-                      </CardFooter>
-                    </Card>
-                  </div>
-                  <div className='relative flex justify-center'>
-                    <Card
-                      shadow='sm'
-                      isPressable
-                      onPress={() => console.log('item pressed')}
-                    >
-                      <CardBody className='overflow-visible p-0'>
-                        <Image
-                          width={400}
-                          height={400}
-                          alt='NextUI hero Image'
-                          src='/NFTImages/stampBoardA.png'
-                          className='min-w-[400px]'
-                        />
-                      </CardBody>
-                      <CardFooter className='text-small justify-between'>
-                        <b>Title</b>
-                        <p className='text-default-500'>Series 1</p>
-                      </CardFooter>
-                    </Card>
-                  </div>
-                  <div className='relative flex justify-center'>
-                    <Card
-                      shadow='sm'
-                      isPressable
-                      onPress={() => console.log('item pressed')}
-                    >
-                      <CardBody className='overflow-visible p-0'>
-                        <Image
-                          width={400}
-                          height={400}
-                          alt='NextUI hero Image'
-                          src='/NFTImages/stampBoardA.png'
-                          className='min-w-[400px]'
-                        />
-                      </CardBody>
-                      <CardFooter className='text-small justify-between'>
-                        <b>Title</b>
-                        <p className='text-default-500'>Series 1</p>
-                      </CardFooter>
-                    </Card>
+                  <div className='flex flex-col mr-4 p-3 text-center'>
+                    <span className='font-bold uppercase'>관리자</span>
+                    <span className='font-normal text-gray-500'>Type</span>
                   </div>
                 </div>
               </div>
             </div>
+            <div className='my-8 text-center'>
+              <h3 className='mb-2 font-semibold text-2xl'>YouJun</h3>
+              <div className='mb-10 mt-3 flex flex-col items-center justify-center gap-2'>
+                <span className='font-medium text-blue-gray-700'>
+                  0x718579A4952DF3Ffc46226f4071Dc40131ae0E3d
+                </span>
+                <span className='font-normal text-blue-gray-500'>
+                  안녕하세요! 스탬프 NFT로 다양한 활동을 기획중인 교사입니다.
+                </span>
+              </div>
+            </div>
+
+            <div className='mb-10 border-t-3 border-green-300 py-10 text-center'>
+              <div className='flex flex-wrap w-full justify-around px-4 gap-10 '>
+                <div className='relative flex justify-center'>
+                  <Card
+                    shadow='lg'
+                    isPressable
+                    onPress={() => console.log('item pressed')}
+                    
+                  >
+                    <CardBody className='overflow-visible p-0'>
+                      <Image
+                        width={400}
+                        height={400}
+                        alt='NextUI hero Image'
+                        src='/NFTImages/stampBoardA.png'
+                        className='min-w-[400px]'
+                      />
+                    </CardBody>
+                    <CardFooter className='text-md px-4 mx-auto'>
+                      <div className=' px-4 mx-auto w-full '>
+                        <div className='flex justify-between'>
+                          <p className='text-lg'>Series 1</p>
+                          <p className='text-lg '>
+                            100%
+                          </p>
+                        </div>
+                        <Progress
+                          aria-label='Music progress'
+                          classNames={{
+                            base: 'max-w-md',
+                            track: 'drop-shadow-md border border-default',
+                            indicator: 'bg-gradient-to-r from-blue-500 to-green-500',
+                            label: 'tracking-wider font-medium text-default-600',
+                            value: 'text-green-50',
+                          }}
+                          
+                          color='default'
+                          size='md'
+                          value={100}
+                        />
+                      </div>
+                    </CardFooter>
+                  </Card>
+
+                  <div
+                    className='absolute grid grid-rows-2 grid-cols-2 gap-9 top-24'
+                    draggable='false'
+                  >
+                    <Image
+                      src='/NFTImages/incheon1.jpeg'
+                      alt='stamp1'
+                      width={90}
+                      height={90}
+                      className='rounded-xl shadow-2xl'
+                    />
+                    <Image
+                      src='/NFTImages/incheon2.jpeg'
+                      alt='stamp1'
+                      width={90}
+                      height={90}
+                      className='rounded-xl shadow-2xl'
+                    />
+                    <Image
+                      src='/NFTImages/incheon3.jpeg'
+                      alt='stamp1'
+                      width={90}
+                      height={90}
+                      className='rounded-xl shadow-2xl'
+                    />
+                    <Image
+                      src='/NFTImages/incheon4.jpeg'
+                      alt='stamp1'
+                      width={90}
+                      height={90}
+                      className='rounded-xl shadow-2xl'
+                    />
+                  </div>
+                </div>
+                <div className='relative flex justify-center'>
+                  <Card
+                    shadow='sm'
+                    isPressable
+                    onPress={() => console.log('item pressed')}
+                  >
+                    <CardBody className='overflow-visible p-0'>
+                      <Image
+                        width={400}
+                        height={400}
+                        alt='NextUI hero Image'
+                        src='/NFTImages/stampBoardA.png'
+                        className='min-w-[400px]'
+                      />
+                    </CardBody>
+                    <CardFooter className='text-small justify-between'>
+                      <b>Title</b>
+                      <p className='text-default-500'>Series 1</p>
+                    </CardFooter>
+                  </Card>
+                </div>
+                <div className='relative flex justify-center'>
+                  <Card
+                    shadow='sm'
+                    isPressable
+                    onPress={() => console.log('item pressed')}
+                  >
+                    <CardBody className='overflow-visible p-0'>
+                      <Image
+                        width={400}
+                        height={400}
+                        alt='NextUI hero Image'
+                        src='/NFTImages/stampBoardA.png'
+                        className='min-w-[400px]'
+                      />
+                    </CardBody>
+                    <CardFooter className='text-small justify-between'>
+                      <b>Title</b>
+                      <p className='text-default-500'>Series 1</p>
+                    </CardFooter>
+                  </Card>
+                </div>
+                <div className='relative flex justify-center'>
+                  <Card
+                    shadow='sm'
+                    isPressable
+                    onPress={() => console.log('item pressed')}
+                  >
+                    <CardBody className='overflow-visible p-0'>
+                      <Image
+                        width={400}
+                        height={400}
+                        alt='NextUI hero Image'
+                        src='/NFTImages/stampBoardA.png'
+                        className='min-w-[400px]'
+                      />
+                    </CardBody>
+                    <CardFooter className='text-small justify-between'>
+                      <b>Title</b>
+                      <p className='text-default-500'>Series 1</p>
+                    </CardFooter>
+                  </Card>
+                </div>
+              </div>
+            </div>
           </div>
-        
+        </div>
       </section>
     </div>
   );

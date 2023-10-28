@@ -21,7 +21,9 @@ const Guide = () => {
             따른 실질적인 보상을 얻을 수 있습니다! 보다 직관적인 UI로 여러분들은
             내가 원하는 혜택들을 선택하고 해당 미션을 달성할 수 있습니다. 그리고
             NFT 기술을 통해서 그 기록과 가치는 영구히 저장됩니다. 그 누구도
-            조작하거나 방해할 수 없습니다. 지금 바로 신청해서 스탬프 보드 NFT에 스탬프 NFT들을 찍으세요! 아래의 지도에 나와 있는 NFT와 Point를 얻을 수 있습니다!
+            조작하거나 방해할 수 없습니다. 지금 바로 신청해서 스탬프 보드 NFT에
+            스탬프 NFT들을 찍으세요! 아래의 지도에 나와 있는 NFT와 Point를 얻을
+            수 있습니다!
           </p>
         </div>
       </div>
@@ -34,7 +36,13 @@ const Guide = () => {
           height={580}
           className="w-full object-cover object-center 2xl:rounded-5xl"
         /> */}
-        <KakaoMap  width="1440px" height="580px"/>
+        <KakaoMap
+          width='1440px'
+          height='580px'
+          level={8}
+          zoomable={false}
+          draggable={false}
+        />
 
         <div className='absolute z-10 flex flex-col bg-white py-8 pl-5 pr-7 gap-3 rounded-3xl border shadow-md md:left-[5%] lg:top-20'>
           <div className='flex w-full flex-col'>
