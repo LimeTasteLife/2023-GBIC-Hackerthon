@@ -11,8 +11,6 @@ generator client {
   provider = "prisma-client-js"
 }
 
-
-
 model User {
   id            String    @id @default(cuid())
   name          String?
@@ -21,4 +19,6 @@ model User {
   address       String?   @unique
   account       String    @unique
   image         String?
+  series        Int?
+  stamp         String?
 }

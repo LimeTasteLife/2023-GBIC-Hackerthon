@@ -12,7 +12,7 @@ import usePlacesAutocomplete, {
 } from 'use-places-autocomplete';
 
 import { Combobox } from '@headlessui/react';
-import getAddress from '@/helpers/getAddress';
+
 
 interface GoogleMapProps {
   id?: string;
@@ -116,11 +116,11 @@ function Map({
   // }
 
   // const center = useMemo(() => ({ lat: 21.3099, 157.8581 }), []);
-  console.log(center);
+  
 
   const [selected, setSelected] = useState(null);
 
-  console.log('selected', selected);
+  
   return (
     <div className='mt-2'>
       <div className={showSearch ? 'mb-3' : 'hidden'}>

@@ -6,6 +6,8 @@ interface KakaoMapProps {
   longitude?: number;
   setCustomValue?: (id: string, value: number) => void;
   detailPage?: boolean;
+  width?: string;
+  height?: string;
 }
 
 const KakaoMap = ({
@@ -13,11 +15,13 @@ const KakaoMap = ({
   longitude,
   setCustomValue,
   detailPage = false,
+  width,
+  height,
 }: KakaoMapProps) => {
   return (
     <Map
       center={{ lat: 37.66673760000001, lng: 126.3833964 }}
-      style={{ width: '1440px', height: '580px', borderRadius: '20px' }}
+      style={{ width: width, height: height, borderRadius: '20px' }}
       level={8}
       draggable={false}
       zoomable={false}

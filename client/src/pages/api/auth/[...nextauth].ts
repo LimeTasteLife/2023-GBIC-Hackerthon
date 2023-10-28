@@ -1,9 +1,9 @@
 import NextAuth, { NextAuthOptions } from 'next-auth';
 import { MoralisNextAuthProvider } from '@moralisweb3/next';
-import { PrismaAdapter } from "@auth/prisma-adapter"
-import { PrismaClient } from "@prisma/client"
+import { PrismaAdapter } from '@auth/prisma-adapter';
+import { PrismaClient } from '@prisma/client';
 
-const prisma = new PrismaClient()
+const prisma = new PrismaClient();
 
 export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma),

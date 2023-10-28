@@ -4,10 +4,15 @@ import {
   NavbarContent,
   NavbarItem,
   Link,
-  Button,
-  NavbarMenuToggle,
+  DropdownItem,
+  DropdownTrigger,
+  Dropdown,
+  DropdownMenu,
+  Avatar,
   NavbarMenu,
+  Button,
   NavbarMenuItem,
+  NavbarMenuToggle,
 } from '@nextui-org/react';
 
 import { useState } from 'react';
@@ -25,6 +30,35 @@ export default function App() {
   const { data: session, status } = useSession();
   const user: any = session?.user!;
   console.log({ session }, status);
+
+  const getBlockchainFromChainID = (chainId: number) => {
+    switch (chainId) {
+      case 1:
+        return 'Ethereum Mainnet';
+      case 56:
+        return 'Binance Smart Chain';
+      case 137:
+        return 'Polygon';
+      case 80001:
+        return 'Polygon Mumbai';
+      default:
+        return 'Unknown';
+    }
+  };
+
+  let blockchain = '';
+  if (session?.user && user.chainId) {
+    blockchain = getBlockchainFromChainID(user.chainId);
+  } else {
+    blockchain = 'Unknown';
+  }
+
+  const truncateHexAddress = (hexAddress: string) => {
+    const prefix = hexAddress.slice(0, 4); // Extract the '0x' prefix
+    const truncatedAddress =
+      hexAddress.slice(2, 4) + '...' + hexAddress.slice(-4);
+    return prefix + truncatedAddress;
+  };
 
   const menuItems = [
     'Profile',
@@ -61,6 +95,16 @@ export default function App() {
             {NAV_LINKS[1].label}
           </Link>
         </NavbarItem>
+        <NavbarItem isActive={pathName === NAV_LINKS[1].href}>
+          <Link
+            color={`${
+              pathName === NAV_LINKS[4].href ? 'primary' : 'foreground'
+            }`}
+            href={NAV_LINKS[4].href}
+          >
+            {NAV_LINKS[4].label}
+          </Link>
+        </NavbarItem>
         <NavbarItem isActive={pathName === NAV_LINKS[2].href}>
           <Link
             href={NAV_LINKS[2].href}
@@ -84,19 +128,39 @@ export default function App() {
       </NavbarContent>
       <NavbarContent justify='end'>
         {session?.user ? (
-          <NavbarItem>
-            <Button
-              as={Link}
-              color='primary'
-              href='/auth/login'
-              variant='flat'
-              onClick={() => {
-                signOut({ redirect: true });
-              }}
-            >
-              Sign out
-            </Button>
-          </NavbarItem>
+          <Dropdown placement='bottom-end'>
+            <DropdownTrigger>
+              <Avatar
+                isBordered
+                as='button'
+                className='transition-transform'
+                color='secondary'
+                name='Jason Hughes'
+                size='sm'
+                src='https://i.pravatar.cc/150?u=a042581f4e29026704d'
+              />
+            </DropdownTrigger>
+            <DropdownMenu aria-label='Profile Actions' variant='flat'>
+              <DropdownItem key='profile' className='h-14 gap-2'>
+                <p className='font-semibold'>Signed in as</p>
+                <p className='font-semibold'>{truncateHexAddress(user.account)}</p>
+              </DropdownItem>
+              <DropdownItem key='settings'>{blockchain}</DropdownItem>
+             
+              <DropdownItem
+                onPress={() => {
+                  signOut({ redirect: true });
+                }}
+                key='logout'
+                color='danger'
+                as={Button}
+                href='/auth/login'
+                className='text-red-500 bg-transparent text-start'
+              >
+                Sign out
+              </DropdownItem>
+            </DropdownMenu>
+          </Dropdown>
         ) : (
           <NavbarItem>
             <Button as={Link} color='primary' href='/auth/login' variant='flat'>

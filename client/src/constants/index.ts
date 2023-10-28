@@ -4,6 +4,7 @@ export const NAV_LINKS = [
   { href: '/Minting', key: 'Minting', label: 'Minting' },
   { href: '/Series', key: 'Series', label: 'Series' },
   { href: '/MyNFT', key: 'MyNFT ', label: 'MyNFT ' },
+  { href: '/transferNFT', key: 'transferNFT', label: 'TransferNFT' },
 ];
 
 // CAMP SECTION
@@ -28,7 +29,7 @@ export const FEATURES = [
     icon: '/lendingPage/tech.svg',
     variant: 'green',
     description:
-      "여러분들이 가지고 있는 모든 NFT 들은 안전하게 지갑과 블록체인에 저장됩니다. 여러분들은 그저 비밀번호만 잘 알고 있다면 다른 걱정은 할 필요가 없습니다. 비밀번호만 알고 있다면 언제 어디서든지 자신의 NFT들을 확인할 수 있습니다.",
+      '여러분들이 가지고 있는 모든 NFT 들은 안전하게 지갑과 블록체인에 저장됩니다. 여러분들은 그저 비밀번호만 잘 알고 있다면 다른 걱정은 할 필요가 없습니다. 비밀번호만 알고 있다면 언제 어디서든지 자신의 NFT들을 확인할 수 있습니다.',
   },
   {
     title: '높은 확장성',
@@ -84,19 +85,17 @@ export const SOCIALS = {
   ],
 };
 
-
 export const IncheonSeriesExample = [
-  
-  {label :'전등사', lat: 37.75373760000001, lng: 126.4833964},
-  {label :'광성보',lat: 37.664987, lng: 126.5300939},
-  {label :'동막해수욕장', lat: 37.5925761, lng: 126.4581875},
-  {label :'보문사', lat: 37.68862319999999, lng: 126.3219046}
-]
+  { label: '전등사', lat: 37.75373760000001, lng: 126.4833964 },
+  { label: '광성보', lat: 37.664987, lng: 126.5300939 },
+  { label: '동막해수욕장', lat: 37.5925761, lng: 126.4581875 },
+  { label: '보문사', lat: 37.68862319999999, lng: 126.3219046 },
+];
 
 export const Step = [
   {
     id: 'world-1',
-    imgUrl: '/lendingPage/planet-01.png',
+    imgUrl: '/lendingPage/metamaskLogin.png',
     title: '지갑으로 간편 로그인',
   },
   {
@@ -121,7 +120,68 @@ export const Step = [
   },
 ];
 
-
-
-
-
+export const ExampleSeries = {
+  seriesInfo: {
+    title: '강화도 맛집 탐방 시리즈~',
+    series: 1,
+    benefit: '지역문화 상품권 10000원',
+    description:
+      '강화도에 있는 다양한 맛집과 문하재를 탐방하면서 스탬프를 찍어오는 이벤트',
+    useWhere: '인천 가락시작',
+    owner: 'GBIC',
+    useWhenFrom: 'Thu Oct 26 2023 00:00:00 GMT+0900 (Korean Standard Time)',
+    useWhenTo: 'Thu Oct 26 2023 00:00:00 GMT+0900 (Korean Standard Time)',
+  },
+  '0': {
+    name: 'Series 1 Stamp Board',
+    image:
+      'https://raw.githubusercontent.com/LimeTasteLife/2023-GBIC-Hackerthon/49b30f091baa6c0fdae2bfa6d218a81a3158be7d/client/web3/metadata/series2incheon.png',
+    description: '첫번째 인천 스탬프 NFT 시리즈의 도장판',
+    quantity: 10,
+    series: 1,
+  },
+  '1': {
+    name: 'Series 1 Stamp 1',
+    image:
+      'https://raw.githubusercontent.com/LimeTasteLife/2023-GBIC-Hackerthon/49b30f091baa6c0fdae2bfa6d218a81a3158be7d/client/web3/metadata/series2incheon.png',
+    description: '첫번째 인천 스탬프 NFT 시리즈의 도장',
+    quantity: 10,
+    lat: 37.2345,
+    lng: 126.5334,
+    place: '인천광역시 강화군 보문사',
+    series: 1,
+  },
+  '2': {
+    name: 'Series 1 Stamp 2',
+    image:
+      'https://raw.githubusercontent.com/LimeTasteLife/2023-GBIC-Hackerthon/49b30f091baa6c0fdae2bfa6d218a81a3158be7d/client/web3/metadata/series2incheon.png',
+    description: '첫번째 인천 스탬프 NFT 시리즈의 도장',
+    quantity: 10,
+    lat: 37.2345,
+    lng: 126.5334,
+    place: '인천광역시 강화군 보문사',
+    series: 1,
+  },
+  '3': {
+    name: 'Series 1 Stamp 3',
+    image:
+      'https://raw.githubusercontent.com/LimeTasteLife/2023-GBIC-Hackerthon/49b30f091baa6c0fdae2bfa6d218a81a3158be7d/client/web3/metadata/series2incheon.png',
+    description: '첫번째 인천 스탬프 NFT 시리즈의 도장',
+    quantity: 10,
+    lat: 37.2345,
+    lng: 126.5334,
+    place: '인천광역시 강화군 보문사',
+    series: 1,
+  },
+  '4': {
+    name: 'Series 1 Stamp 4',
+    image:
+      'https://raw.githubusercontent.com/LimeTasteLife/2023-GBIC-Hackerthon/49b30f091baa6c0fdae2bfa6d218a81a3158be7d/client/web3/metadata/series2incheon.png',
+    description: '첫번째 인천 스탬프 NFT 시리즈의 도장',
+    quantity: 10,
+    lat: 37.2345,
+    lng: 126.5334,
+    place: '인천광역시 강화군 보문사',
+    series: 1,
+  },
+};

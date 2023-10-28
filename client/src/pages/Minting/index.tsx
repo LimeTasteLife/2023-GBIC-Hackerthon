@@ -8,7 +8,7 @@ import Modals from './terms_conditions';
 import ImageUpload from '@/components/ImageUpload/ImageUpload';
 import GoogleMaps from '@/components/GoogleMap';
 
-import { SelectMenuOption } from '@/types/types';
+
 
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
@@ -17,11 +17,15 @@ import priceToString from '@/helpers/priceToString';
 import { toast } from 'react-toastify';
 import { useSession } from 'next-auth/react';
 import dayjs from 'dayjs';
+import confetti from 'canvas-confetti';
+import { mintData } from './dataschema';
 
+
+//TODO: series 번호 get 요청해서 받아오기 
 const ERC1155 = () => {
   const [isOpen, setIsOpen] = useState(false);
   // Default this to a country's code to preselect it
-  const [country, setCountry] = useState<SelectMenuOption['value']>();
+
   const router = useRouter();
   // const { data: session, status } = useSession();
 
@@ -31,6 +35,12 @@ const ERC1155 = () => {
   const [isChecked, setIsChecked] = useState(false);
 
   const [isLoading, setIsLoading] = useState(false);
+
+  const handleConfetti = () => {
+    confetti({});
+  };
+  const nonhandleConfetti = () => {};
+  const isEmptyObject = {};
 
   const options = {
     theme: {
@@ -45,6 +55,7 @@ const ERC1155 = () => {
       selected: 'bg-green-500',
     },
   };
+
 
   const {
     register,
@@ -70,10 +81,11 @@ const ERC1155 = () => {
 
       stampBoardDesc: '',
 
-      firstStampDesc: '',
-      firstStampLat: null,
-      firstStampLot: null,
-      firstStampAddress: null,
+        firstStampDesc: '',
+        firstStampLat: null,
+        firstStampLot: null,
+        firstStampAddress: null,
+
 
       secondStampDesc: '',
       secondStampLat: null,
@@ -104,7 +116,9 @@ const ERC1155 = () => {
   });
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
-    console.log('result', data);
+    console.log('data', data);
+    const result = mintData(data={data});
+    console.log('result', result);
     // setIsLoading(true);
     // axios
     //   .post('/api/add-transaction/polygon_ERC1155', data)
@@ -147,6 +161,8 @@ const ERC1155 = () => {
   const fourthStampAddress = watch('fourthStampAddress');
   const fourthStampLat = watch('fourthStampLat');
   const fourthStampLot = watch('fourthStampLot');
+
+  
 
   return (
     <>
@@ -387,7 +403,7 @@ const ERC1155 = () => {
                 <textarea
                   id='stampBoardDesc'
                   {...register('stampBoardDesc', {
-                    required: '필수 입력 사안입니다..',
+                    required: '필수 입력 사안입니다.',
                     minLength: {
                       value: 2,
                       message: '최소 입력 글자수는 2 입니다.',
@@ -426,7 +442,7 @@ const ERC1155 = () => {
                 <textarea
                   id='firstStampDesc'
                   {...register('firstStampDesc', {
-                    required: '필수 입력 사안입니다..',
+                    required: '필수 입력 사안입니다.',
                     minLength: {
                       value: 2,
                       message: '최소 입력 글자수는 2 입니다.',
@@ -483,7 +499,7 @@ const ERC1155 = () => {
                 <textarea
                   id='secondStampDesc'
                   {...register('secondStampDesc', {
-                    required: '필수 입력 사안입니다..',
+                    required: '필수 입력 사안입니다.',
                     minLength: {
                       value: 2,
                       message: '최소 입력 글자수는 2 입니다.',
@@ -518,7 +534,7 @@ const ERC1155 = () => {
                 </label>
 
                 <GoogleMaps
-                id='2'
+                  id='2'
                   showSearch={true}
                   latitude={secondStampLat}
                   longitude={secondStampLot}
@@ -540,7 +556,7 @@ const ERC1155 = () => {
                 <textarea
                   id='thirdStampDesc'
                   {...register('thirdStampDesc', {
-                    required: '필수 입력 사안입니다..',
+                    required: '필수 입력 사안입니다.',
                     minLength: {
                       value: 2,
                       message: '최소 입력 글자수는 2 입니다.',
@@ -575,7 +591,7 @@ const ERC1155 = () => {
                 </label>
 
                 <GoogleMaps
-                id='3'
+                  id='3'
                   showSearch={true}
                   latitude={thirdStampLat}
                   longitude={thirdStampLot}
@@ -597,7 +613,7 @@ const ERC1155 = () => {
                 <textarea
                   id='fourthStampDesc'
                   {...register('fourthStampDesc', {
-                    required: '필수 입력 사안입니다..',
+                    required: '필수 입력 사안입니다.',
                     minLength: {
                       value: 2,
                       message: '최소 입력 글자수는 2 입니다.',
@@ -632,7 +648,7 @@ const ERC1155 = () => {
                 </label>
 
                 <GoogleMaps
-                id='4'
+                  id='4'
                   showSearch={true}
                   latitude={fourthStampLat}
                   longitude={fourthStampLot}
@@ -648,24 +664,24 @@ const ERC1155 = () => {
                 type='checkbox'
                 value='Terms & Conditions'
                 {...register('checkbox', {
-                  required: 'Accept the Terms & Conditions',
+                  required: '다음 사항에 동의해주세요.',
                 })}
                 checked={isChecked}
                 onChange={() => setIsChecked(!isChecked)}
-                className='w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600'
+                className='w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500  focus:ring-2  '
               />
               <label
                 htmlFor='link-checkbox'
-                className='ml-2 text-sm font-medium text-gray-900 dark:text-gray-300'
+                className='ml-2 text-sm font-medium text-gray-900 '
               >
-                I agree with the{' '}
+                다음에 동의합니다.{' '}
               </label>
-              <span className='ml-2 text-sm font-medium text-gray-900 dark:text-gray-300'>
-                <Modals onClick={setIsChecked} />.
+              <span className='ml-2 text-sm font-medium text-gray-900 '>
+                <Modals onClick={setIsChecked} />
               </span>
             </div>
             {errors.checkbox && (
-              <p className='text-sm leading-relaxed text-red-500 dark:text-red-500'>
+              <p className='text-sm leading-relaxed text-red-500 '>
                 {errors.checkbox.message?.toString()}
               </p>
             )}
@@ -673,11 +689,17 @@ const ERC1155 = () => {
             <Button
               // isProcessing={isLoading}
               // gradientDuoTone='redToYellow'
+              onPress={
+                Object.values(errors).length === 0 ? handleConfetti : nonhandleConfetti
+              }
               type='submit'
-              className='inline-flex items-center mt-8 w-full'
+              disableRipple
+              className="relative  w-full mt-4 bg-green-400 overflow-visible rounded-full hover:-translate-y-1  shadow-xl  after:content-[''] after:absolute after:rounded-full after:inset-0 after:bg-background/40 after:z-[-1] after:transition after:!duration-500 hover:after:scale-150 hover:after:opacity-0"
+              size='lg'
+              // onPress={}
               disabled={isLoading}
             >
-              Register your transaction and prepare mint NFT
+              위의 내용으로 Series와 관련 NFT를 민팅하기
             </Button>
           </form>
         </div>

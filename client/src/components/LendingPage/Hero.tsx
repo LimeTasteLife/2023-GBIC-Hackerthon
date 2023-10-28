@@ -9,10 +9,10 @@ const Hero = () => {
       <div className='hero-map' />
 
       <div className='relative z-20 flex flex-1 flex-col xl:w-1/2'>
-        <div></div>
-
-        <span className='flex flex-col bold-52 lg:bold-88'>
-          Dynamic NFT Stamp event
+       
+      <h1 className="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl "><span className="underline underline-offset-3 decoration-8 decoration-green-400 ">world’s first</span></h1>
+        <span className='flex flex-col bold-52 md:text-5xl lg:text-6xl lg:bold-88'>
+        <span className="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400">Dynamic NFT</span> Stamp event
         </span>
         <p className='regular-16 py-6 text-gray-30 xl:max-w-[520px]'>
           스탬프 보드 NFT와 함께 인천의 다양한 문화를 더욱 알차게 즐기세요! 이
@@ -23,12 +23,12 @@ const Hero = () => {
 
         <div className='my-8 flex flex-wrap gap-5'>
           <p className='bold-16 lg:bold-10 text-blue-70'>
-            누적 포인트 금액 :
-            <span className='regular-16 lg:regular-20 ml-1'>534,000 p</span>
+            활성화된 NFT 스팟 :
+            <span className='regular-16 lg:regular-20 ml-1'>132 곳</span>
           </p>
           <p className='bold-16 lg:bold-10 text-blue-70'>
             발행된 NFT 개수 :
-            <span className='regular-16 lg:regular-20 ml-1'>400</span>
+            <span className='regular-16 lg:regular-20 ml-1'>400 개</span>
           </p>
         </div>
 
