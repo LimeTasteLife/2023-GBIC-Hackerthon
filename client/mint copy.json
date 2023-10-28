@@ -1,62 +1,117 @@
 {
-  "seriesInfo": {
-    "series": 1,
-    "title": "강화도 맛집 탐방 시리즈~",
-    "benefit": "지역문화 상품권 10000원",
-    "owner": "GBIC",
-    "useWhere": "인천 가락시작",
-    "useWhenFrom": "Thu Oct 26 2023 00:00:00 GMT+0900 (Korean Standard Time)",
-    "useWhenTo": "Thu Oct 26 2023 00:00:00 GMT+0900 (Korean Standard Time)",
-    "description": "강화도에 있는 다양한 맛집과 문하재를 탐방하면서 스탬프를 찍어오는 이벤트"
-  },
   "0": {
-    "name": "Series 1 Stamp Board",
-    "image": "https://raw.githubusercontent.com/LimeTasteLife/2023-GBIC-Hackerthon/49b30f091baa6c0fdae2bfa6d218a81a3158be7d/client/web3/metadata/series2incheon.png",
-    "description": "첫번째 인천 스탬프 NFT 시리즈의 도장판",
-    "quantity": 10,
-    "series": 1
+      "name": "Series 1 Stamp Board",
+      "image": "https://res.cloudinary.com/dhtq54adh/image/upload/v1698513934/%E1%84%8C%E1%85%A6%E1%84%86%E1%85%A9%E1%86%A8_%E1%84%8B%E1%85%A5%E1%86%B9%E1%84%8B%E1%85%B3%E1%86%B7-5_rzlxlp.png",
+      "description": "aaaa",
+      "attributes": [
+          {
+              "trait_type": "Series",
+              "value": 1
+          }
+      ]
   },
   "1": {
-    "name": "Series 1 Stamp 1",
-    "image": "https://raw.githubusercontent.com/LimeTasteLife/2023-GBIC-Hackerthon/49b30f091baa6c0fdae2bfa6d218a81a3158be7d/client/web3/metadata/series2incheon.png",
-    "description": "첫번째 인천 스탬프 NFT 시리즈의 1번 도장",
-    "quantity": 10,
-    "lat": 37.2345,
-    "lng": 126.5334,
-    "place": "인천광역시 강화군 보문사",
-    "series": 1
+      "name": "Series 1 Stamp 1",
+      "image": "https://res.cloudinary.com/dhtq54adh/image/upload/v1698513940/incheon2_youeoa.jpg",
+      "description": "ssss",
+      "attributes": [
+          {
+              "trait_type": "Latitude",
+              "value": 37.475589
+          },
+          {
+              "trait_type": "Longitude",
+              "value": 126.6178849
+          },
+          {
+              "trait_type": "Address",
+              "value": "대한민국 인천광역시 중구 차이나타운로26번길 인천 차이나타운"
+          },
+          {
+              "trait_type": "Series",
+              "value": 1
+          }
+      ]
   },
   "2": {
-    "name": "Series 1 Stamp 2",
-    "image": "https://raw.githubusercontent.com/LimeTasteLife/2023-GBIC-Hackerthon/49b30f091baa6c0fdae2bfa6d218a81a3158be7d/client/web3/metadata/series2incheon.png",
-    "description": "첫번째 인천 스탬프 NFT 시리즈의 2번 도장",
-    "quantity": 10,
-    "lat": 37.2345,
-    "lng": 126.5334,
-    "place": "인천광역시 강화군 보문사",
-    "series": 1
+      "name": "Series 1 Stamp 2",
+      "image": "https://res.cloudinary.com/dhtq54adh/image/upload/v1698513940/incheon4_d6ysiq.jpg",
+      "description": "cccc",
+      "attributes": [
+          {
+              "trait_type": "Latitude",
+              "value": 37.4493342
+          },
+          {
+              "trait_type": "Longitude",
+              "value": 126.4513395
+          },
+          {
+              "trait_type": "Address",
+              "value": "대한민국 인천광역시 중구 제2터미널대로 인천국제공항 제2여객터미널"
+          },
+          {
+              "trait_type": "Series",
+              "value": 1
+          }
+      ]
   },
   "3": {
-    "name": "Series 1 Stamp 3",
-    "image": "https://raw.githubusercontent.com/LimeTasteLife/2023-GBIC-Hackerthon/49b30f091baa6c0fdae2bfa6d218a81a3158be7d/client/web3/metadata/series2incheon.png",
-    "description": "첫번째 인천 스탬프 NFT 시리즈의 3번 도장",
-    "quantity": 10,
-    "lat": 37.2345,
-    "lng": 126.5334,
-    "place": "인천광역시 강화군 보문사",
-    "series": 1
+      "name": "Series 1 Stamp 3",
+      "image": "https://res.cloudinary.com/dhtq54adh/image/upload/v1698513940/incheon1_ukgwtg.jpg",
+      "description": "nnnn",
+      "attributes": [
+          {
+              "trait_type": "Latitude",
+              "value": 37.4631505
+          },
+          {
+              "trait_type": "Longitude",
+              "value": 126.4474815
+          },
+          {
+              "trait_type": "Address",
+              "value": "대한민국 인천광역시 중구 공항로 인천국제공항 (ICN)"
+          },
+          {
+              "trait_type": "Series",
+              "value": 1
+          }
+      ]
   },
   "4": {
-    "name": "Series 1 Stamp 4",
-    "image": "https://raw.githubusercontent.com/LimeTasteLife/2023-GBIC-Hackerthon/49b30f091baa6c0fdae2bfa6d218a81a3158be7d/client/web3/metadata/series2incheon.png",
-    "description": "첫번째 인천 스탬프 NFT 시리즈의 4번 도장",
-    "quantity": 10,
-    "lat": 37.2345,
-    "lng": 126.5334,
-    "place": "인천광역시 강화군 보문사",
-    "series": 1
+      "name": "Series 1 Stamp 4",
+      "image": "https://res.cloudinary.com/dhtq54adh/image/upload/v1698513940/incheon3_achz9l.jpg",
+      "description": "mmmm",
+      "attributes": [
+          {
+              "trait_type": "Latitude",
+              "value": 37.4594575
+          },
+          {
+              "trait_type": "Longitude",
+              "value": 126.6256454
+          },
+          {
+              "trait_type": "Address",
+              "value": "인천광역시 인천항"
+          },
+          {
+              "trait_type": "Series",
+              "value": 1
+          }
+      ]
+  },
+  "baseURI": "https://c6b8e7180c3c42db758973559ad7f50d.ipfscdn.io/ipfs/QmbJvDptQstq75CwLTRuBXnvfDNqgjJZWdtDxN7y8eHSuQ",
+  "seriesInfo": {
+      "series": 1,
+      "title": "pppp",
+      "benefit": "oooo",
+      "owner": "iiii",
+      "useWhere": "uuuu",
+      "useWhenFrom": "Mon Oct 30 2023 00:00:00 GMT+0900 (Korean Standard Time)",
+      "useWhenTo": "Tue Oct 31 2023 00:00:00 GMT+0900 (Korean Standard Time)",
+      "description": "yyyy",
+      "quantity": "10"
   }
 }
-
-
-

@@ -8,8 +8,6 @@ import Modals from './terms_conditions';
 import ImageUpload from '@/components/ImageUpload/ImageUpload';
 import GoogleMaps from '@/components/GoogleMap';
 
-
-
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
 import dynamic from 'next/dynamic';
@@ -19,9 +17,10 @@ import { useSession } from 'next-auth/react';
 import dayjs from 'dayjs';
 import confetti from 'canvas-confetti';
 import { mintData } from '../../helpers/dataschema';
+import { ThirdwebStorage } from '@thirdweb-dev/storage';
+import { useStorage } from '@thirdweb-dev/react';
 
-
-//TODO: series 번호 get 요청해서 받아오기 
+//TODO: series 번호 get 요청해서 받아오기
 const ERC1155 = () => {
   const [isOpen, setIsOpen] = useState(false);
   // Default this to a country's code to preselect it
@@ -56,6 +55,11 @@ const ERC1155 = () => {
     },
   };
 
+  //u2bPal9GH8lTIeianzpFXp2kBc-ebdV9VG47q2V2OdcmOqCjYJeUMGu06yi5KeDeKNXNBwm57JukunJmeCD33g
+
+  // const storage = new ThirdwebStorage({
+  //   secretKey:"qJaoFfdNEXknBlleblwy4bidrENIkbgyM9UKCmTArGa-d-RMoiLi6zvN1gnyZLrlSgCLiVf-lty5o2ON_7AFcQ", // You can get one from dashboard settings
+  // });
 
   const {
     register,
@@ -81,11 +85,10 @@ const ERC1155 = () => {
 
       stampBoardDesc: '',
 
-        firstStampDesc: '',
-        firstStampLat: null,
-        firstStampLot: null,
-        firstStampAddress: null,
-
+      firstStampDesc: '',
+      firstStampLat: null,
+      firstStampLot: null,
+      firstStampAddress: null,
 
       secondStampDesc: '',
       secondStampLat: null,
@@ -114,14 +117,33 @@ const ERC1155 = () => {
       );
     },
   });
+  // ipfs://QmcvTy8gru2Ryso5RDkJq6ujD5138XzgRDn6LkxSks5FZF/0
+  // const storage = useStorage();
 
-  const onSubmit: SubmitHandler<FieldValues> = (data) => {
+  const storage = new ThirdwebStorage({
+    clientId: 'c6b8e7180c3c42db758973559ad7f50d',
+    secretKey: process.env.YOUR_SECRET_KEY, // You can get one from dashboard settings
+  });
+
+  
+
+  const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     console.log('data', data);
-    const result = mintData(data={data});
-    console.log('result', result);
+    const result = mintData((data = { data }));
+    console.log('result', result[4]);
 
+    const objects = [result[0], result[1], result[2], result[3], result[4]];
+    const base = "https://c6b8e7180c3c42db758973559ad7f50d.ipfscdn.io/ipfs"
+    const jsonUris = await storage.uploadBatch(objects);
 
+    console.log('jsonUris : ',base.concat(jsonUris[0].slice(6, -2)));
+    const baseUrl = { baseURI : base.concat(jsonUris[0].slice(6, -2))}
+    const returnedTarget = Object.assign(baseUrl, result);
+    console.log('returnedTarget', returnedTarget)
     
+    // const res = await storage?.upload(objects);
+    // console.log('res', res);
+
     // setIsLoading(true);
     // axios
     //   .post('/api/add-transaction/polygon_ERC1155', data)
@@ -164,8 +186,6 @@ const ERC1155 = () => {
   const fourthStampAddress = watch('fourthStampAddress');
   const fourthStampLat = watch('fourthStampLat');
   const fourthStampLot = watch('fourthStampLot');
-
-  
 
   return (
     <>
@@ -693,7 +713,9 @@ const ERC1155 = () => {
               // isProcessing={isLoading}
               // gradientDuoTone='redToYellow'
               onPress={
-                Object.values(errors).length === 0 ? handleConfetti : nonhandleConfetti
+                Object.values(errors).length === 0
+                  ? handleConfetti
+                  : nonhandleConfetti
               }
               type='submit'
               disableRipple

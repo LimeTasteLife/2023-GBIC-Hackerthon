@@ -4,7 +4,7 @@ import "@openzeppelin/contracts/token/ERC1155/presets/ERC1155PresetMinterPauser.
 
 contract MyERC1155 is ERC1155PresetMinterPauser {
     constructor() ERC1155PresetMinterPauser("1") {
-        setURI(0,"series1/0");
+        setURI(0,"/1");
         setURI(1,"series1/1");
         setURI(2,"series2/0");
         mint(msg.sender,0,10,''); //data is needed only when neccessary

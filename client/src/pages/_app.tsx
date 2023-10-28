@@ -10,7 +10,6 @@ import 'flowbite';
 import Layout from '@/components/Layout';
 import { SessionProvider } from 'next-auth/react';
 
-
 const { publicClient, webSocketPublicClient } = configureChains(
   [mainnet],
   [publicProvider()]
@@ -28,13 +27,13 @@ export default function App({
 }: AppProps) {
   return (
     <WagmiConfig config={config}>
-    <SessionProvider session={session}>
-      <NextUIProvider>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      </NextUIProvider>
-    </SessionProvider>
+      <SessionProvider session={session}>
+        <NextUIProvider>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </NextUIProvider>
+      </SessionProvider>
     </WagmiConfig>
   );
 }

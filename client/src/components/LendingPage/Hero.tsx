@@ -3,6 +3,8 @@ import Link from 'next/link';
 import Button from '../Button';
 
 const Hero = () => {
+
+  
   return (
     <section className='max-container padding-container flex flex-col gap-20 py-10 pb-32 md:gap-28 lg:py-20 xl:flex-row '>
       <div className='hero-map' />
@@ -73,8 +75,28 @@ const Hero = () => {
       </div>
 
       <div className='relative flex flex-1 w-full justify-center  '>
+<div className='sm:flex hidden flex-col absolute -left-32 space-y-7'>
+
+
+      <Image
+          src='/NFTImages/incheon1.jpeg'
+          alt='stampBoardExample'
+          width={150}
+          height={150}
+          className=' rounded-full animate-bounce shadow-xl shadow-[#d97706]'
+        />
+
+<Image
+          src='/NFTImages/incheon4.jpeg'
+          alt='stampBoardExample'
+          width={150}
+          height={150}
+          className=' rounded-full shadow-xl animate-bounce shadow-[#4f46e5]'
+        />
+</div>
+        
         <Image
-          src='/NFTImages/stampBoardA.png'
+          src='/NFTImages/stampExample2.png'
           alt='stampBoardExample'
           width={550}
           height={550}
