@@ -18,7 +18,7 @@ import { toast } from 'react-toastify';
 import { useSession } from 'next-auth/react';
 import dayjs from 'dayjs';
 import confetti from 'canvas-confetti';
-import { mintData } from './dataschema';
+import { mintData } from '../../helpers/dataschema';
 
 
 //TODO: series 번호 get 요청해서 받아오기 
