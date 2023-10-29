@@ -19,6 +19,8 @@ router.post('/', async (req, res, next) => {
         const wallet = new Wallet(privateKey).connect(provider);
         const contractWithSigner = contract.connect(wallet);
 
+        // 이미 참여하고 있으면 참여 못하게는 어떻게?
+
         const estimatedGas = await contractWithSigner.estimateGas.safeTransferFrom(
             admin,
             address,
