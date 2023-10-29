@@ -72,8 +72,7 @@ router.get('/', async (req, res, next) => {
                     applyCount: seriesInfo.applyCount,
                 },
             };
-            console.log(seriesInfo, nftInfo);
-            res.status(200).json({ result });
+            res.status(200).json(result);
         }
     } catch (err) {
         console.error(err);
