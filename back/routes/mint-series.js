@@ -25,7 +25,7 @@ router.post('/', async (req, res, next) => {
         for (let i = 0; i < seriesNFTCount; i++) {
             URIs.push(`${ipfsBaseURI}/${i}`);
         }
-        console.log(URIs);
+        //console.log(URIs);
 
         const estimatedGas = await contractWithSigner.estimateGas.mintSeries(
             account,
@@ -37,10 +37,12 @@ router.post('/', async (req, res, next) => {
         const tx = await contractWithSigner.mintSeries(account, seriesInfo.series, amount, URIs, '0x', {
             gasLimit: estimatedGas,
         });
+        // 잘 됨 tx hash DB에 저장해야함.
 
-        console.log(tx.toString());
+        //console.log(tx.toString());
         res.status(200).json({
             log: 'mint-series success',
+            txHash: tx.hash,
         });
     } catch (err) {
         console.error(err);

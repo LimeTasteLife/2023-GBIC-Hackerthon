@@ -4,6 +4,7 @@ const dotenv = require('dotenv');
 const mysql = require('mysql2');
 const cors = require('cors');
 const { ethers, Wallet } = require('ethers');
+const { sequelize } = require('./models');
 
 dotenv.config();
 const app = express();
@@ -18,10 +19,14 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 // connect DB
-/*
-db = mysql.createConnection(process.env.DATABASE_URL);
-console.log('Connected to PlanetScale!');
-*/
+sequelize
+    .sync({ force: false })
+    .then(() => {
+        console.log('Success to connect DB');
+    })
+    .catch((err) => {
+        console.error(err);
+    });
 
 // connect Web3
 const ERC1155 = require('./artifacts/contracts/dnftERC1155.sol/MyERC1155.json');
