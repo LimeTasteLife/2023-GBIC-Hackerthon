@@ -2,6 +2,7 @@ const express = require('express');
 const morgan = require('morgan');
 const dotenv = require('dotenv');
 const mysql = require('mysql2');
+const cors = require('cors');
 const { ethers, Wallet } = require('ethers');
 
 dotenv.config();
@@ -10,6 +11,7 @@ app.set('port', process.env.PORT || 3000);
 const mintRouter = require('./routes/mint-series');
 
 app.use(morgan('dev'));
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
