@@ -1,8 +1,9 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.13;
 import "@openzeppelin/contracts/token/ERC1155/presets/ERC1155PresetMinterPauser.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
 
-contract MyERC1155 is ERC1155PresetMinterPauser {
+contract MyERC1155 is ERC1155PresetMinterPauser, Ownable {
     constructor() ERC1155PresetMinterPauser("1") {}
 
     using Strings for uint256;
@@ -17,17 +18,18 @@ contract MyERC1155 is ERC1155PresetMinterPauser {
 
     function mintSeries(
         address to,
-        uint256 seriesId,
         uint256 amount,
         string[] memory tokenURIs,
         bytes memory data
-    ) external {
-        uint256 hnextSeriesId = seriesId * 10;
+    ) external onlyOwner {
+        uint realNextSeriesId = nextSeriesId + 10;
+
         for (uint i = 0; i < tokenURIs.length; i++) {
-            _setURI(hnextSeriesId, tokenURIs[i]);
-            _mint(to, hnextSeriesId, amount, data);
-            hnextSeriesId++;
+            _setURI(nextSeriesId, tokenURIs[i]);
+            _mint(to, nextSeriesId, amount, data);
+            nextSeriesId++;
         }
+        nextSeriesId = realNextSeriesId;
     }
 
     function uri(
@@ -40,6 +42,10 @@ contract MyERC1155 is ERC1155PresetMinterPauser {
             bytes(tokenURI).length > 0
                 ? string(abi.encodePacked(_baseURI, tokenURI))
                 : super.uri(tokenId);
+    }
+
+    function getNextSeriesId() public view returns (uint) {
+        return nextSeriesId;
     }
 
     function setURI(uint256 tokenId, string memory tokenURI) public {
