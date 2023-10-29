@@ -1,5 +1,6 @@
 import { Map, MapMarker } from 'react-kakao-maps-sdk';
 import { IncheonSeriesExample } from '../constants';
+import Image from 'next/image';
 
 interface KakaoMapProps {
   width?: string;
@@ -43,7 +44,30 @@ const KakaoMap = ({
           },
         }}
       >
-        <div style={{ color: '#000' }}>{IncheonSeriesExample[1].label}</div>
+        <div
+          style={{
+            color: '#000',
+            padding: 0,
+            borderRadius: 10,
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            margin: '0 auto',
+            alignItems: 'center',
+            marginTop: '-150px',
+          }}
+        >
+          <Image
+            src='/NFTImages/mapImage1.png'
+            width={150}
+            height={100}
+            alt='example'
+            objectFit=''
+           
+          />
+
+          {IncheonSeriesExample[1].label}
+        </div>
       </MapMarker>
       <MapMarker
         position={{
@@ -64,7 +88,30 @@ const KakaoMap = ({
           },
         }}
       >
-        <div style={{ color: '#000' }}>{IncheonSeriesExample[2].label}</div>
+       <div
+          style={{
+            color: '#000',
+            padding: 0,
+            borderRadius: 10,
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            margin: '0 auto',
+            alignItems: 'center',
+            marginTop: '-150px',
+          }}
+        >
+          <Image
+            src='/NFTImages/mapImage2.png'
+            width={150}
+            height={100}
+            alt='example'
+            objectFit=''
+           
+          />
+
+          {IncheonSeriesExample[2].label}
+        </div>
       </MapMarker>
       <MapMarker
         position={{
@@ -72,7 +119,30 @@ const KakaoMap = ({
           lng: IncheonSeriesExample[3].lng,
         }}
       >
-        <div style={{ color: '#000' }}>{IncheonSeriesExample[3].label}</div>
+        <div
+          style={{
+            color: '#000',
+            padding: 0,
+            borderRadius: 10,
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            margin: '0 auto',
+            alignItems: 'center',
+            marginTop: '-150px',
+          }}
+        >
+          <Image
+            src='/NFTImages/tradition6.jpeg'
+            width={150}
+            height={100}
+            alt='example'
+            objectFit=''
+           
+          />
+
+          {IncheonSeriesExample[3].label}
+        </div>
       </MapMarker>
     </Map>
   );

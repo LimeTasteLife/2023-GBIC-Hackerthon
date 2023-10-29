@@ -22,7 +22,7 @@ export const FEATURES = [
     icon: '/lendingPage/tech.svg',
     variant: 'green',
     description:
-      'NFT와 블록체인 기술을 통해 여러분들이 갖고 있는 스탬프의 기회비용은 유지 됩니다. 오롯히 여러분들만이 가진 스탬프 NFT로서 유일무이한 가치를 가집니다. ',
+      'NFT와 IPFS 기술을 통해 여러분들이 갖고 있는 스탬프의 기회비용은 안전하게 유지 됩니다. 그 누구도 여러분이 갖고 있는 NFT를 조작하거나 뺏지 못합니다. 오롯히 여러분들만이 가진 스탬프 NFT로서 유일무이한 가치를 가집니다. ',
   },
   {
     title: '안전하고 편리한 가치',
@@ -108,14 +108,14 @@ export const Step = [
   {
     id: 'world-3',
     imgUrl: '/lendingPage/planet-03.png',
-    title: '원하는 시리즈 선택 후 스템프 보드 NFT 받기',
-    desc: '자신이 하고 싶은 Series를 빠르게 선택하고 도장(스탬프) NFT를 찍을 스템프 보드 NFT를 받으세요.'
+    title: '원하는 시리즈 선택 후 스템프 보드 NFT 및 스템프 NFT 받기',
+    desc: '자신이 하고 싶은 Series를 빠르게 선택하고 도장(스탬프) NFT를 찍을 스템프 보드 NFT를 받으세요. 그리고 각각의 스템프 NFT를 받기 위한 조건(위치 및 유효기간)을 확인하세요.'
   },
   {
     id: 'world-4',
     imgUrl: '/lendingPage/planet-04.png',
     title: '미션 수행하면서 스탬프 NFT 받기',
-    desc: '자신이 신청한 Series의 NFT 도장을 받을 수 있는 조건(유효기간 및 장소)을 확인하세요. 그리고 Burrito Wallet 또는 SNS 를 통해 행위인증을 진행하세요.'
+    desc: '미션을 수행했다면 Burrito Wallet 또는 SNS 를 통해 행위인증을 진행하세요. Burrito Wallet에 접속 후 You Jun 에게 본인의 얼굴과 해당 위치를 식별할 수 있는 장소에서 찍은 사진과 함께 지갑 주소를 메세지를 보내는 것이 행위 인증의 전부입니다.'
   },
   {
     id: 'world-5',

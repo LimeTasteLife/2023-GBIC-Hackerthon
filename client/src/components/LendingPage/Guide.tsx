@@ -44,7 +44,7 @@ const Guide = () => {
           draggable={false}
         />
 
-        <div className='absolute z-10 flex flex-col bg-white py-8 pl-5 pr-7 gap-3 rounded-3xl border shadow-md md:left-[5%] lg:top-20'>
+        <div className='absolute z-10 flex flex-col bg-white py-8 pl-5 pr-7 gap-3 rounded-3xl border shadow-xl md:left-[5%] lg:top-20'>
           <div className='flex w-full flex-col'>
             <p className='bold-20 text-green-500'>Series 1</p>
             <p className='bold-20 mt-2'>나의 스탬프 보드 현황</p>
@@ -60,9 +60,14 @@ const Guide = () => {
               value: 'text-green-50',
             }}
             label='완성까지'
-            value={66.6}
+            value={75}
             showValueLabel={true}
           />
+
+          <Image src='/NFTImages/stampExample4.png'
+          width={300}
+          height={300}
+          alt='example'/>
 
           <p className='regular-16 text-gray-20'>남은 목적지 : 보문사</p>
         </div>

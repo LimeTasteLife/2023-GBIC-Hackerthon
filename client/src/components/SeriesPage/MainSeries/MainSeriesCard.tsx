@@ -75,6 +75,30 @@ const MainSeriesCard = () => {
           </blockquote>
 
           <Link
+          href='/Series/1'
+          className='mt-5 relative inline-flex items-center px-12 py-3 overflow-hidden text-lg font-medium text-green-400 border-2 border-green-400 rounded-full hover:text-white group hover:bg-gray-50'
+        >
+          <span className='absolute left-0 block w-full h-0 transition-all bg-green-400 opacity-100 group-hover:h-full top-1/2 group-hover:top-0 duration-400 ease'></span>
+          <span className='absolute right-0 flex items-center justify-start w-10 h-10 duration-300 transform translate-x-full group-hover:translate-x-0 ease'>
+            <svg
+              className='w-5 h-5'
+              fill='none'
+              stroke='currentColor'
+              viewBox='0 0 24 24'
+              xmlns='http://www.w3.org/2000/svg'
+            >
+              <path
+                strokeLinecap='round'
+                strokeLinejoin='round'
+                strokeWidth='2'
+                d='M14 5l7 7m0 0l-7 7m7-7H3'
+              ></path>
+            </svg>
+          </span>
+          <span className='relative'>자세히 보기</span>
+        </Link>
+
+          {/* <Link
             href='/Series/1'
             className='px-5 py-2.5 mt-2 relative rounded group font-medium text-white inline-block shadow-2xl shadow-cyan-500'
           >
@@ -83,7 +107,7 @@ const MainSeriesCard = () => {
             <span className='absolute inset-0 w-full h-full transition-all duration-200 ease-out rounded shadow-xl bg-gradient-to-br filter group-active:opacity-0 group-hover:blur-sm from-green-600 to-blue-500'></span>
             <span className='absolute inset-0 w-full h-full transition duration-200 ease-out rounded bg-gradient-to-br to-green-600 from-blue-500'></span>
             <span className='relative'>자세히 보기</span>
-          </Link>
+          </Link> */}
         </div>
         <div className='hidden relative lg:mt-0 lg:col-span-5 lg:flex'>
           <motion.div

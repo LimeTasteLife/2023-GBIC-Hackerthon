@@ -28,7 +28,7 @@ body {
     @apply  bg-green-90 px-8 py-4 text-white transition-all hover:bg-black
   }
   .btn_dark_green_outline  { 
-    @apply border-gray-20 bg-green-90 px-8 py-5 text-white
+    @apply border-gray-20 bg-green-500 px-8 py-5 text-white
   }
   
   .max-container {
