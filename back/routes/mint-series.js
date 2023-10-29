@@ -1,5 +1,6 @@
 const express = require('express');
 const { ethers, Wallet } = require('ethers');
+const { Series, Nfts } = require('../models');
 
 const router = express.Router();
 
@@ -9,8 +10,10 @@ const privateKey = process.env.PRIVATE_KEY;
 const account = process.env.PUBLIC_KEY;
 
 router.post('/', async (req, res, next) => {
-    const { seriesInfo, baseURI } = req.body;
+    const { seriesInfo, baseURI, minterAddress } = req.body;
+    const { data } = req.body;
     try {
+        // provider와 contract를 연결하고 서명한다.
         const provider = new ethers.providers.JsonRpcProvider(URL);
         const contractAddress = process.env.CONTRACT_ADDRESS;
         const contract = new ethers.Contract(contractAddress, ERC1155.abi, provider);
@@ -19,7 +22,7 @@ router.post('/', async (req, res, next) => {
 
         const amount = seriesInfo.quantity;
         const URIs = [];
-        // 이 숫자 동적으로 추가해야함.
+        // 동적으로 숫자 추가.
         const seriesNFTCount = 5;
         const ipfsBaseURI = baseURI.replace('https://c6b8e7180c3c42db758973559ad7f50d.ipfscdn.io/ipfs/', '');
         for (let i = 0; i < seriesNFTCount; i++) {
@@ -27,23 +30,71 @@ router.post('/', async (req, res, next) => {
         }
         //console.log(URIs);
 
-        const estimatedGas = await contractWithSigner.estimateGas.mintSeries(
-            account,
-            seriesInfo.series,
-            amount,
-            URIs,
-            '0x'
-        );
-        const tx = await contractWithSigner.mintSeries(account, seriesInfo.series, amount, URIs, '0x', {
-            gasLimit: estimatedGas,
-        });
-        // 잘 됨 tx hash DB에 저장해야함.
+        // 트랜잭션을 보내기 전에 가스를 추정한다.
+        //const estimatedGas = await contractWithSigner.estimateGas.mintSeries(account, amount, URIs, '0x');
 
-        //console.log(tx.toString());
-        res.status(200).json({
-            log: 'mint-series success',
-            txHash: tx.hash,
+        // 만약에 이미 있는 시리즈를 중복 민팅한다면 (?) 어떻게 탐지할 것인가.
+        const tx = await contractWithSigner.mintSeries(account, amount, URIs, '0x', {
+            // 임의의 안정된 가스양
+            gasLimit: 5000000,
         });
+        const receipt = await tx.wait();
+        let seriesId = await contractWithSigner.getNextSeriesId();
+        seriesId = seriesId - 10;
+        let nSeriesId = seriesId;
+        // console.log(receipt);
+        // 트랜잭션 receipt를 확인해서 성공여부를 체크한다.
+        if (receipt.status === 1) {
+            // 트랜잭션 성공, 시리즈를 DB에 저장한다.
+            console.log(seriesInfo.quantity);
+            const createSeries = await Series.create({
+                id: seriesId,
+                title: seriesInfo.title,
+                benefit: seriesInfo.benefit,
+                description: seriesInfo.description,
+                quantity: seriesInfo.quantity,
+                owner: minterAddress,
+                useWhere: seriesInfo.useWhere,
+                useWhenFrom: seriesInfo.useWhenFrom,
+                useWhenTo: seriesInfo.useWhenTo,
+                applyCount: 0,
+                transactionHash: tx.hash,
+            });
+
+            if (createSeries) {
+                // 성공했으면,
+                const nfts = data.slice(1).map((nft) => {
+                    return {
+                        id: ++nSeriesId,
+                        name: nft.name,
+                        image: nft.image,
+                        description: nft.description,
+                        latitude: nft.attributes[0].value,
+                        longtitude: nft.attributes[1].value,
+                        seriesId: seriesId,
+                    };
+                });
+                console.log(nfts);
+                const creatNfts = await Nfts.bulkCreate(nfts);
+                if (creatNfts) {
+                    res.status(200).json({
+                        log: 'mint-series success',
+                        txHash: tx.hash,
+                    });
+                } else {
+                    res.status(400).json({
+                        log: 'db error',
+                        seriesId: seriesId,
+                    });
+                }
+            } else {
+                res.status(400).json({
+                    log: 'db error',
+                });
+            }
+        } else {
+            throw new Error('Transaction failed');
+        }
     } catch (err) {
         console.error(err);
         res.status(400).json({

@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
-const Series_nfts = require('./series_nfts');
 const User_series = require('./user_series');
+const Nfts = require('./nfts');
 
 module.exports = class Series extends Sequelize.Model {
     static init(sequelize) {
@@ -8,7 +8,7 @@ module.exports = class Series extends Sequelize.Model {
             {
                 id: {
                     type: Sequelize.INTEGER,
-                    autoIncrement: true,
+                    unique: true,
                     allowNull: false,
                     primaryKey: true,
                 },
@@ -24,7 +24,7 @@ module.exports = class Series extends Sequelize.Model {
                     type: Sequelize.STRING(1000),
                     allowNull: false,
                 },
-                quantitiy: {
+                quantity: {
                     type: Sequelize.INTEGER,
                     allowNull: false,
                 },
@@ -69,6 +69,6 @@ module.exports = class Series extends Sequelize.Model {
 
     static associate(db) {
         db.Series.belongsToMany(db.User, { through: User_series });
-        db.Series.belongsToMany(db.Nfts, { through: Series_nfts });
+        db.Series.hasMany(db.Nfts, { foreignKey: 'seriesId', sourceKey: 'id' });
     }
 };
