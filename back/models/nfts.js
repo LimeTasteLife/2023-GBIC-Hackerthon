@@ -32,6 +32,14 @@ module.exports = class Nfts extends Sequelize.Model {
                     type: Sequelize.STRING(100),
                     allowNull: false,
                 },
+                address: {
+                    type: Sequelize.STRING(500),
+                    allowNull: false,
+                },
+                boardTraitSeries: {
+                    type: Sequelize.STRING(100),
+                    allowNull: false,
+                },
             },
             {
                 sequelize,

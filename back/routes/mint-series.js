@@ -46,7 +46,6 @@ router.post('/', async (req, res, next) => {
         // 트랜잭션 receipt를 확인해서 성공여부를 체크한다.
         if (receipt.status === 1) {
             // 트랜잭션 성공, 시리즈를 DB에 저장한다.
-            console.log(seriesInfo.quantity);
             const createSeries = await Series.create({
                 id: seriesId,
                 title: seriesInfo.title,
@@ -58,6 +57,11 @@ router.post('/', async (req, res, next) => {
                 useWhenFrom: seriesInfo.useWhenFrom,
                 useWhenTo: seriesInfo.useWhenTo,
                 applyCount: 0,
+                baseURI: baseURI,
+                boardName: data[0].name,
+                boardImage: data[0].image,
+                boardDescription: data[0].description,
+                boardTraitSeries: data[0].attributes[0].value,
                 transactionHash: tx.hash,
             });
 
@@ -71,20 +75,21 @@ router.post('/', async (req, res, next) => {
                         description: nft.description,
                         latitude: nft.attributes[0].value,
                         longtitude: nft.attributes[1].value,
+                        address: nft.attributes[2].value,
+                        boardTraitSeries: nft.attributes[3].value,
                         seriesId: seriesId,
                     };
                 });
-                console.log(nfts);
+                //console.log(nfts);
                 const creatNfts = await Nfts.bulkCreate(nfts);
                 if (creatNfts) {
                     res.status(200).json({
                         log: 'mint-series success',
-                        txHash: tx.hash,
+                        seriesId: seriesId,
                     });
                 } else {
                     res.status(400).json({
                         log: 'db error',
-                        seriesId: seriesId,
                     });
                 }
             } else {

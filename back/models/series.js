@@ -49,6 +49,26 @@ module.exports = class Series extends Sequelize.Model {
                     allowNull: true,
                     defaultValue: 0,
                 },
+                baseURI: {
+                    type: Sequelize.STRING(500),
+                    allowNull: false,
+                },
+                boardName: {
+                    type: Sequelize.STRING(100),
+                    allowNull: false,
+                },
+                boardImage: {
+                    type: Sequelize.STRING(1000),
+                    allowNull: false,
+                },
+                boardDescription: {
+                    type: Sequelize.STRING(1000),
+                    allowNull: false,
+                },
+                boardTraitSeries: {
+                    type: Sequelize.INTEGER,
+                    allowNull: false,
+                },
                 transactionHash: {
                     type: Sequelize.STRING(200),
                     allowNull: false,
