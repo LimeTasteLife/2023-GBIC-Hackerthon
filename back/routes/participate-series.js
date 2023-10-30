@@ -35,7 +35,7 @@ router.post('/', async (req, res, next) => {
         if (receipt.status === 1) {
             // smart contract 트랜잭션 성공 후,
             // 유저 정보 만들어주고
-            const creatUser = await User.create(
+            const creatUser = await User.findOrCreate(
                 {
                     account: address,
                 },
