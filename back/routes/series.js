@@ -106,7 +106,7 @@ router.get('/all', async (req, res, next) => {
         let idx = 0;
         const promises = findSeriesAll.map(async (series) => {
             const findNftsAll = await Nfts.findAll({
-                where: { seriesId: series.id },
+                where: { seriesId: findSeriesAll[idx].id },
             });
 
             const pushData = {
@@ -164,6 +164,7 @@ router.get('/all', async (req, res, next) => {
             };
 
             result.push(pushData);
+            idx++;
         });
         await Promise.all(promises);
         res.status(200).json(result);
