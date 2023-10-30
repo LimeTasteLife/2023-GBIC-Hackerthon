@@ -27,7 +27,7 @@ router.get('/', async (req, res, next) => {
                         {
                             model: User,
                             where: { id: findUser.id },
-                            through: User_nfts, // M:N 관계의 through 테이블
+                            through: { model: User_nfts, attributes: ['transactionHash'] }, // M:N 관계의 through 테이블
                             attributes: [], // User에 관한 추가 정보는 필요 없으므로 속성을 비워둡니다.
                         },
                     ],
@@ -47,10 +47,12 @@ router.get('/', async (req, res, next) => {
                             ],
                         },
                         ...findNfts.map((nft) => {
+                            //console.log(nft);
                             return {
                                 name: nft.name,
                                 image: nft.image,
                                 description: nft.description,
+                                transactionHash: nft.transactionHash,
                                 attributes: [
                                     {
                                         trait_type: 'Latitude',

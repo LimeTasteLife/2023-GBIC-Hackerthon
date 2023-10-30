@@ -32,25 +32,33 @@ router.post('/', async (req, res, next) => {
             const tx = await contractWithSigner.safeTransferFrom(admin, address, series + stamp, 1, '0x', {
                 gasLimit: estimatedGas,
             });
+            // user에게 nft를 넘긴 거래기록 넘겨주기.
+            const receipt = await tx.wait();
+            if (receipt.status === 1) {
+                // nft transfer 하면, db에 nft 넣기.
 
-            // nft transfer 하면, db에 nft 넣기.
-            const nftInfo = await Nfts.findOne({
-                where: { seriesId: series, id: series + stamp },
-            });
-            const findUser = await User.findOne({
-                where: { account: address },
-            });
-            if (nftInfo && findUser) {
-                const addNft = await nftInfo.addUser(findUser);
+                const nftInfo = await Nfts.findOne({
+                    where: { seriesId: series, id: series + stamp },
+                });
+                const findUser = await User.findOne({
+                    where: { account: address },
+                });
+                if (nftInfo && findUser) {
+                    console.log(nftInfo, findUser);
+                    const addNft = await nftInfo.addUser(findUser, {
+                        through: { transactionHash: tx.hash },
+                    });
+                } else {
+                    throw new Error('db failed');
+                }
+                // console.log(tx.hash);
+                res.status(200).json({
+                    log: 'transfer-nft(stamp) success',
+                    txHash: tx.hash,
+                });
             } else {
-                throw new Error('db failed');
+                throw new Error('Smart contract transaction failed');
             }
-
-            // console.log(tx.hash);
-            res.status(200).json({
-                log: 'transfer-nft(stamp) success',
-                txHash: tx.hash,
-            });
         } else {
             res.status(233).json({
                 log: 'need to participate series first',

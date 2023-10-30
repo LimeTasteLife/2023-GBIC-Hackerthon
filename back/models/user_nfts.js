@@ -3,7 +3,12 @@ const Sequelize = require('sequelize');
 module.exports = class User_nfts extends Sequelize.Model {
     static init(sequelize) {
         return super.init(
-            {},
+            {
+                transactionHash: {
+                    type: Sequelize.STRING(500),
+                    allowNull: false,
+                },
+            },
             {
                 sequelize,
                 timestamps: false,
