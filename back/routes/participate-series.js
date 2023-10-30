@@ -35,24 +35,27 @@ router.post('/', async (req, res, next) => {
         if (receipt.status === 1) {
             // smart contract 트랜잭션 성공 후,
             // 유저 정보 만들어주고
-            const creatUser = await User.findOrCreate(
-                {
+            const [createUser, created] = await User.findOrCreate({
+                defaults: {
                     account: address,
                 },
-                { transaction: seqTx }
-            );
+                where: { account: address },
+                transaction: seqTx,
+            });
 
-            // applyCount 업데이트
-            const updateSeries = await Series.update(
-                {
-                    applyCount: sequelize.literal('apply_count + 1'),
-                },
-                { where: { id: seriesId } },
-                { transaction: seqTx }
-            );
+            if (createUser || created) {
+                // applyCount 업데이트
+                const updateSeries = await Series.update(
+                    {
+                        applyCount: sequelize.literal('apply_count + 1'),
+                    },
+                    { where: { id: seriesId } },
+                    { transaction: seqTx }
+                );
 
-            const seriesInstance = await Series.findByPk(seriesId, { transaction: seqTx }); // 해당 seriesId로 Series 인스턴스 가져오기
-            await creatUser.addSeries(seriesInstance, { transaction: seqTx }); // User와 Series 관계 설정
+                const seriesInstance = await Series.findByPk(seriesId, { transaction: seqTx }); // 해당 seriesId로 Series 인스턴스 가져오기
+                await createUser.addSeries(seriesInstance, { transaction: seqTx }); // User와 Series 관계 설정
+            }
         } else {
             throw new Error('Transaction failed');
         }
