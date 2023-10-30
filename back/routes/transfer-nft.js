@@ -1,5 +1,6 @@
 const express = require('express');
 const { ethers, Wallet } = require('ethers');
+const { User, Nfts } = require('../models');
 
 const router = express.Router();
 
@@ -18,19 +19,32 @@ router.post('/', async (req, res, next) => {
         const wallet = new Wallet(privateKey).connect(provider);
         const contractWithSigner = contract.connect(wallet);
 
-        const checkParticipated = await contractWithSigner.balanceOf(address, series * 10);
+        const checkParticipated = await contractWithSigner.balanceOf(address, series);
         if (checkParticipated.toString() !== '0') {
             const estimatedGas = await contractWithSigner.estimateGas.safeTransferFrom(
                 admin,
                 address,
-                series * 10 + stamp,
+                series + stamp,
                 1,
                 '0x'
             );
 
-            const tx = await contractWithSigner.safeTransferFrom(admin, address, series * 10 + stamp, 1, '0x', {
+            const tx = await contractWithSigner.safeTransferFrom(admin, address, series + stamp, 1, '0x', {
                 gasLimit: estimatedGas,
             });
+
+            // nft transfer 하면, db에 nft 넣기.
+            const nftInfo = await Nfts.findOne({
+                where: { seriesId: series, id: series + stamp },
+            });
+            const findUser = await User.findOne({
+                where: { account: address },
+            });
+            if (nftInfo && findUser) {
+                const addNft = await nftInfo.addUser(findUser);
+            } else {
+                throw new Error('db failed');
+            }
 
             // console.log(tx.hash);
             res.status(200).json({
