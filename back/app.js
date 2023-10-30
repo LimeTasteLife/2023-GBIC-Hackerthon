@@ -21,7 +21,9 @@ app.use(express.urlencoded({ extended: false }));
 
 // connect DB
 sequelize
-    .sync({ force: true })
+    .sync({
+        /*force: true*/
+    })
     .then(() => {
         console.log('Success to connect DB');
     })
