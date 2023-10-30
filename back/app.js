@@ -16,11 +16,7 @@ const seriesRouter = require('./routes/series');
 const userRouter = require('./routes/user');
 
 app.use(morgan('dev'));
-app.use(
-    cors({
-        origin: ['http://127.0.0.1:5173', 'http://127.0.0.1:80', 'https://gbic-hackathon.vercel.app/'],
-    })
-);
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
@@ -62,12 +58,6 @@ app.use(async (req, res, next) => {
     }
 });
 */
-
-app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', req.header('Origin'));
-    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-    next();
-});
 
 app.use('/mint-series', mintRouter);
 app.use('/participate-series', participateSeriesRouter);
