@@ -12,8 +12,7 @@ const admin = process.env.PUBLIC_KEY;
 router.post('/', async (req, res, next) => {
     // 먼저 sequelize transaction 생성
     const seqTx = await sequelize.transaction();
-    const { address } = req.body;
-    const seriesId = req.body['series-id'];
+    const { address, seriesId } = req.body;
     // console.log(address, seriesId);
     try {
         const provider = new ethers.providers.JsonRpcProvider(URL);
